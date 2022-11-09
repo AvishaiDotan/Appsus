@@ -26,14 +26,9 @@
     border-bottom: 0.1px var(--clr-mail1) solid;
 }
 
-  
-
 .emails-container {
     width: 100%;
 }
-
-
-
 
 .headlines-container td {
     height: 40px;
@@ -41,4 +36,8 @@
 
 .headlines-container td:last-child, .email-container td:last-child {
     align-self: center;
+}
+
+.headline {
+    cursor: pointer;
 }

@@ -8,7 +8,7 @@ const email1 = {
     subject: 'ABA!',
     body: 'Would love to catch up eeee',
     isRead: true,
-    isStarred: false
+    isStarred: false,
     isBookmarked: true,
     sentAt : 1551133930594,
     from: 'momo@momo.com',

@@ -8,7 +8,7 @@ export default {
         <table>
             <thead>
                 <tr class="headlines-container">
-                    <td v-for="headline in tableHeadlines" :title="headline">{{headline}}</td>
+                    <td class="headline" v-for="headline in tableHeadlines" @click.stop="setSort(headline)" :title="headline">{{headline}}</td>
                 </tr>
             </thead>
             <table class="emails-container">
@@ -26,7 +26,8 @@ export default {
     data() {
         return {
             filterBy: {},
-            tableHeadlines: ['', '', 'Subject', 'Body', 'Time'],
+            sortBy: {type: '', descending: true},
+            tableHeadlines: ['', '', 'subject', 'body', 'time'],
             emails: [],
         }
     },
@@ -53,7 +54,12 @@ export default {
             .then(emails => {
                 this.emails = emails
             })
+        },
+        setSort(sortBy) {
+            if (this.sortBy.type === sortBy) this.sortBy.descending = !this.sortBy.descending
+            this.sortBy.type = sortBy
         }
+
 
     },
     computed: {
@@ -74,13 +80,24 @@ export default {
             if (this.filterBy.folder) {
                 if (this.filterBy.folder === 'unread') {
 
-                    return emails.filter(email => !email['isRead'])
+                    emails = emails.filter(email => !email['isRead'])
 
                 } else if (this.filterBy.folder) {
 
-                    return emails.filter(email => email[this.filterBy.folder])
+                    emails = emails.filter(email => email[this.filterBy.folder])
                 }
             }
+
+            if (this.sortBy.type) {
+                emails.sort((email1, email2) => {
+                    const order = (this.sortBy.descending) ? [email1, email2] : [email2, email1]
+                    if (this.sortBy.type === 'time') return (order[0].sentAt - order[1].sentAt)
+                    else if (this.sortBy.type === 'body') return order[0].subject.localeCompare(order[1].subject)
+                    else if (this.sortBy.type === 'subject') return order[0].subject.localeCompare(order[1].subject)
+                })
+            }
+            
+
             return emails
         },
     },

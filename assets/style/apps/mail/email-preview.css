@@ -13,7 +13,7 @@
 }
 
 
-.email-star-icon, .email-bookmark-icon {
+.email-star-icon.unselected, .email-bookmark-icon.unselected {
     filter: invert(81%) sepia(4%) saturate(215%) hue-rotate(175deg) brightness(94%) contrast(92%);
 }
 

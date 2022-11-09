@@ -4,11 +4,17 @@ export default {
     props: ['email'],
     template: `
         <tr>
-            <td :title="getBookMarkTitle">
-                <img class="email-bookmark-icon" src="./assets/style/apps/mail/icons/bookmark-icon.png" alt="bookmark-icon"/>
+            <td :title="bookMarkTitle" @click.stop="toggleProperty('isBookmarked')">
+                <img class="email-bookmark-icon" 
+                :class="{unselected: !email.isBookmarked}"
+                :src="bookmarkIcon"
+                alt="bookmark-icon"/>
             </td>
-            <td :title="getStarTitle"  @click.stop="toggleStar">
-                <img class="email-star-icon" :src="getStarIcon" alt="star-icon" />
+            <td :title="starTitle"  @click.stop="toggleProperty('isStarred')">
+                <img class="email-star-icon" 
+                :src="starIcon" 
+                :class="{unselected: !email.isStarred}"
+                alt="star-icon" />
             </td>
             <td title="Subject" class="email-subject">{{email.subject}}</td>
             <td title="Mail" class="email-body">{{email.body}}</td>
@@ -16,16 +22,22 @@ export default {
         </tr>
     `,
     computed: {
-        getBookMarkTitle() {
-            return (this.email.isBookmark) ? 'Remove mark' : 'Mark'
+        bookMarkTitle() {
+            return (this.email.isBookmarked) ? 'Remove mark' : 'Mark'
         },
-        getStarTitle() {
+        bookmarkIcon() {
+            return (this.email.isBookmarked) ? "./assets/style/apps/mail/icons/bookmarked-icon.png" :
+            "./assets/style/apps/mail/icons/bookmark-icon.png" 
+        },
+        starTitle() {
             return (this.email.isStarred) ? 'Unstar' : 'Star'
         },
-        getStarIcon() {
+        starIcon() {
             return (this.email.isStarred) ? "./assets/style/apps/mail/icons/starred-icon.png" :
             "./assets/style/apps/mail/icons/star-icon.png"
         },
+
+
         getDate() {
             const emailDate = new Date(this.email.sentAt)
             const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "June",
@@ -47,8 +59,16 @@ export default {
     },
     methods: {
         toggleStar() {
+
             this.email.isStarred = !this.email.isStarred
             emailService.save(this.email)
+        },
+
+        toggleProperty(property) {
+            
+            this.email[property] = !this.email[property]
+            emailService.save(this.email)
+            
         }
     }
 }

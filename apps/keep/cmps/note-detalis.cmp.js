@@ -13,6 +13,11 @@ export default {
         </component>
     </section>
     `,
+    data() {
+        return {
+            txt: this.note.txt
+        }
+    },
     methods: {
         
     },
@@ -23,6 +28,7 @@ export default {
     methods: {
         close() {
             this.note.isPicked = false
+            // this.note.txt = this.txt
         },
         save() {
             this.$emit('save')

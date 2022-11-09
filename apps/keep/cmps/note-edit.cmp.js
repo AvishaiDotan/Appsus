@@ -1,18 +1,19 @@
 import { noteService } from "../services/note.service.js"
 import { showErrorMsg, showSuccessMsg } from '../../../services/event-bus.service.js'
 
-import noteDetalis from "./note-detalis.cmp.js"
+import noteAddForm from "./note-add-form.cmp.js"
 
 export default {
     template: `
     <section class="add-note">
         <input type="text" placeholder="Write Note.." v-model="txt"/>
-        <input v-if="isImgAdd" type="text" placeholder="Enter Img Url.." v-model="imgUrl"/>
         <button @click="addNoteTxt"><i class="fa-solid fa-arrow-right"></i></button>
         <button @click="addNote('img')"><i class="fa-solid fa-image"></i></button>
         <button><i class="fa-sharp fa-solid fa-note"></i></button>
-        <note-detalis v-if="isAdd" class="note-details" :note="newNote" @save="save(note)"/>
+        <note-add-form v-if="isAdd" :newNote="newNote" @save="save"/>
+        <!-- <note-detalis v-if="isAdd" class="note-details" :note="newNote" @save="save(note)"/> -->
 
+        <!-- <p>{{ newNote }}</p> -->
     </section>
     `,
     data() {
@@ -20,8 +21,6 @@ export default {
             note: null,
             newNote: null,
             txt: '',
-            imgUrl: '',
-            isImgAdd: false,
             isAdd: false
         }
     },
@@ -49,13 +48,21 @@ export default {
                     console.log('hi');
                     break
             }
+        },
+        save(newNote) {
+            console.log(newNote);
+            noteService.save(newNote).then((note) => {
+                showSuccessMsg(`Note ${note.id} Added...`)
+
+                this.$emit('add', note)
+            })
         }
     },
     computed: {
 
     },
     components: {
-        noteDetalis
+        noteAddForm
     }
 
 }

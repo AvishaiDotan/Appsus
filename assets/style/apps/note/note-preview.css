@@ -2,6 +2,10 @@
     background-color: antiquewhite;
 }
 
+.note-img-preview {
+    background-color: rgb(200, 121, 101);
+}
+
 .note-img-preview img{
     object-fit: cover;
     width: 100%;

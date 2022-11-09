@@ -1,13 +1,25 @@
 .add-note {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+    box-shadow: -1px 1px 6px 0px;
+    padding: 10px;
 }
-.add-note >* {
-    margin-inline-end: 5px;
+.add-actions >* {
+    margin-inline-end: 10px;
 }
 
 .add-note span {
     font-size: 1.5rem;
+}
+
+.add-note input{
+    border: none;
+    padding: 5px;
+}
+
+.todo-input-container{
+    display: flex;
+    flex-direction: column;
 }

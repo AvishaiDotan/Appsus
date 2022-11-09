@@ -11,11 +11,6 @@ export const noteService = {
     save,
     getEmptyNote,
     getNextNoteId,
-    test
-}
-
-function test() {
-    console.log('hi');
 }
 
 function query() {

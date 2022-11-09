@@ -1,15 +1,15 @@
 import { emailService } from '../services/emailService.service.js'
 
-import emailHeader from './email-header.cmp.js'
-import emailCompose from './email-compose.cmp.js'
-import emailFolderList from './email-folder-list.js'
-import emailList from './email-list.cmp.js'
+import emailHeader from '../cmps/email-header.cmp.js'
+import emailCompose from '../cmps/email-compose.cmp.js'
+import emailFolderList from '../cmps/email-folder-list.js'
+import emailList from '../cmps/email-list.cmp.js'
 
 
 export default {
     template:`
     <main class="email-app-container">
-        <email-header class="email-header"/>
+        <email-header/>
         <email-compose v-if="isCompose"/>
         <email-folder-list @compose-mail="composeMailToggle" class="email-folder-list"/>
         <email-list :emails="emails" class="email-list"/>

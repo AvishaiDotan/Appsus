@@ -1,5 +1,7 @@
+import { noteService } from '../services/note.service.js'
+
 export default {
-    template:`
+    template: `
         <section>Im Keep</section>
     `,
 }

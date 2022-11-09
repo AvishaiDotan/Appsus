@@ -3,6 +3,8 @@ import { storageService } from '../../../services/async-storage.service.js'
 
 const EMAIL_KEY = 'emailDB'
 
+
+
 const email1 = {
     id: 'e102',
     subject: 'ABA!',
@@ -118,5 +120,7 @@ function _createEmail(vendor, maxSpeed = 250) {
     email.id = utilService.makeId() 
     return email
 }
+
+
 
 

@@ -10,15 +10,29 @@ export default {
                 :src="bookmarkIcon"
                 alt="bookmark-icon"/>
             </td>
+
             <td :title="starTitle"  @click.stop="toggleProperty('isStarred')">
                 <img class="email-star-icon" 
                 :src="starIcon" 
                 :class="{unselected: !email.isStarred}"
                 alt="star-icon" />
             </td>
+
             <td title="Subject" class="email-subject">{{email.subject}}</td>
             <td title="Mail" class="email-body">{{email.body}}</td>
             <td title="Date" class="email-body">{{getDate}}</td>
+            <div :style="actionsBackgroundColor" class="email-preview-actions">
+                <span>
+                    <img @click.stop="deleteEmail"
+                     src="./assets/style/apps/mail/icons/trash-icon.png"
+                      alt="trash-icon" />
+                </span>
+                <span>
+                    <img @click.stop="toggleProperty('isRead')"
+                     :src="readStateIcon" 
+                     alt="unread-mail-icon" />
+                </span>
+            </div>
         </tr>
     `,
     computed: {
@@ -35,6 +49,13 @@ export default {
         starIcon() {
             return (this.email.isStarred) ? "./assets/style/apps/mail/icons/starred-icon.png" :
             "./assets/style/apps/mail/icons/star-icon.png"
+        },
+        readStateIcon() {
+            return (this.email.isRead) ? './assets/style/apps/mail/icons/envelope-solid.svg' :
+                './assets/style/apps/mail/icons/envelope-open-solid.svg'
+        },
+        actionsBackgroundColor() {
+            return { backgroundColor: (this.email.isRead) ? 'var(--clr-mail-light-secondary)' : 'var( --clr-mail-background)' }
         },
 
 
@@ -69,6 +90,10 @@ export default {
             this.email[property] = !this.email[property]
             emailService.save(this.email)
             
+        },
+        deleteEmail() {
+            this.email.removedAt = Date.now()
+            emailService.save(this.email)
         }
     }
 }

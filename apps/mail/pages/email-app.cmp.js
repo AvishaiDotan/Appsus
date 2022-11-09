@@ -10,16 +10,21 @@ import emailDetails from '../cmps/email-details.cmp.js'
 
 export default {
     template: `
+        <email-compose v-if="isCompose"/>
     <main class="email-app-container">
         <email-header/>
-        <email-compose v-if="isCompose"/>
         <email-folder-list 
             :emails="emails" 
             @compose-mail="composeMailToggle" 
             class="email-folder-list"
         />
         
-        <email-list v-if="!openedEmail" @set-open-email="setOpenEmail" :emails="emails" class="email-list"/>
+        <email-list 
+            v-if="!openedEmail" 
+            @set-open-email="setOpenEmail"
+            @setEmails="setEmails"
+            :emails="emails" 
+            class="email-list"/>
         <email-details v-else="!openedEmail" :email="openedEmail"/>
         
     </main>
@@ -39,6 +44,9 @@ export default {
         setOpenEmail(email) {
             this.openedEmail = email
         },
+        setEmails(emails) {
+            this.emails = emails
+        }
     },
     created() {
         eventBus.on('close-email', () => { this.openedEmail = false })

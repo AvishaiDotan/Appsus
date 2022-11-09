@@ -53,7 +53,9 @@ export default {
             emailService.query()
             .then(emails => {
                 this.emails = emails
+                this.$emit('set-emails', emails)
             })
+            
         },
         setSort(sortBy) {
             if (this.sortBy.type === sortBy) this.sortBy.descending = !this.sortBy.descending

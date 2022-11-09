@@ -32,28 +32,4 @@ export default {
             this.unselectEmail()
         }
     },
-    // created() {
-    //     this.loadEmail()
-    // },
-    // methods: {
-    //     loadEmail() {
-    //         console.log(this.mailId);
-    //         emailService.get(this.mailId)
-    //             .then(mail => {
-    //                 this.mail = mail
-    //             })
-    //             .catch(err => showErrorMsg('Cannot load mail'))
-    //     }
-    // },
-    // computed: {
-    //     mailId() {
-    //         return this.$route.params.id
-    //     },
-    // },
-    // watch: {
-    //     mailId() {
-    //         console.log('Email Id changed')
-    //         this.loadEmail()
-    //     }
-    // }
 }

@@ -6,6 +6,10 @@ import emailList from './email-list.cmp.js'
 
 export default {
     template:`
+        <email-header/>
+        <email-compose/>
+        <email-folder-list/>
+        <email-list/>
         <section>Im Mail</section>
     `,
     components: {

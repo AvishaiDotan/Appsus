@@ -1,0 +1,25 @@
+.note-details {
+    position: fixed;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    min-width: 200px;
+    min-height: 100px;
+    border-radius: 20px;
+    background-color: transparent;
+    z-index: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    /* padding: 10px; */
+}
+
+.note-details button {
+    align-self: center;
+}
+
+.note-details img{
+    border-radius: inherit;
+    object-fit: contain;
+    /* height: 100%; */
+}

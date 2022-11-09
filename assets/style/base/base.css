@@ -2,9 +2,7 @@
   box-sizing: border-box;
 }
 
-html {
-  
-}
+html {}
 
 body {
   margin: 0;
@@ -51,4 +49,3 @@ button {
 .debug * {
   outline: 1px solid gold
 }
-

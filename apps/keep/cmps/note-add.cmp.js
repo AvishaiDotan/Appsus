@@ -19,16 +19,6 @@ export default {
             <span @click="addNote('todo')"><i class="fa-sharp fa-solid fa-book-open"></i></span>
             <span @click="save"><i class="fa-solid fa-floppy-disk"></i></span>
         </div>
-
-
-
-
-
-        <!-- <note-detalis v-if="isAdd" class="note-details" :note="newNote" @save="save(note)"/> -->
-        <!-- <note-add-form v-if="isAdd" :newNote="newNote" @save="save"/> -->
-        
-
-        <!-- <p>{{ newNote }}</p> -->
     </section>
     `,
     data() {

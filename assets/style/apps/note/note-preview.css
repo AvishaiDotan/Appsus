@@ -1,18 +1,39 @@
 .note-txt-preview {
-    background-color: antiquewhite;
+    padding: 5px;
+}
+
+.note-txt-preview li {
+    display: flex;
+    /* display: inline; */
 }
 
 .note-img-preview {
-    background-color: rgb(200, 121, 101);
+    padding: 5px;
 }
 
-.note-img-preview img{
+.note-img-preview img {
     object-fit: cover;
     width: 100%;
 }
 
 .note-preview {
     break-inside: avoid;
-    border: 2px solid black;
+    border: 1px solid rgb(162, 161, 161);
     margin: 5px 0;
+    transition: .4s;
+}
+
+.note-preview:hover {
+    box-shadow: 0px 1px 2px 0px;
+    /* scale: 1.05; */
+    cursor: pointer;
+}
+
+.note-preview h1,
+.note-preview h2,
+.note-preview h3,
+.note-preview h4,
+.note-preview h5,
+.note-preview h6 {
+    margin: 0;
 }

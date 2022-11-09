@@ -2,12 +2,12 @@ import { noteService } from '../services/note.service.js'
 import { showErrorMsg, showSuccessMsg } from '../../../services/event-bus.service.js'
 
 import noteList from './note-list.cmp.js'
-import noteEdit from './note-edit.cmp.js'
+import noteAdd from './note-add.cmp.js'
 
 export default {
     template: `
         <section class="note-app">Im Keep
-        <note-edit @add="addNew"/>
+        <note-add @add="addNew"/>
         <note-list v-if="notes.length" 
             :notes="notes" @save="save"/>
         </section>
@@ -41,6 +41,6 @@ export default {
     },
     components: {
         noteList,
-        noteEdit
+        noteAdd
     }
 }

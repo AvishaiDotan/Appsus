@@ -13,11 +13,16 @@ export default {
     `,
     data() {
         return {
-            txt: this.note.txt
+            txt: '',
+            todos: []
         }
     },
+    created() {
+        this.txt = this.note.info.txt || null
+        // this.todos ? [...this.note.info.todos] : null
+    },
     methods: {
-        
+
     },
     components: {
         noteTxtDetails,
@@ -26,7 +31,8 @@ export default {
     methods: {
         close() {
             this.note.isPicked = false
-            // this.note.txt = this.txt
+            if (this.txt) this.note.info.txt = this.txt
+            // else this.note.info.todos = this.todos
         },
         save() {
             this.$emit('save')

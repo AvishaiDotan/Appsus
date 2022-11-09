@@ -9,7 +9,7 @@ export default {
         <div class="add-input-container">
             <input v-if="!isTodo" type="text" :placeholder="placeholder" v-model="txt"/>
             <div v-else class="todo-input-container">
-                <input v-for="(todo, index) in newNote.info.todos" type="text" :placeholder="placeholder" v-model="todo.txt"/>
+                <input v-for="todo in newNote.info.todos" type="text" :placeholder="placeholder" v-model="todo.txt"/>
                 <span @click="addTodo">+</span>
             </div>
         </div>
@@ -17,7 +17,7 @@ export default {
             <span @click="addNote('txt')"><i class="fa-solid fa-font"></i></span>
             <span @click="addNote('img')"><i class="fa-solid fa-image"></i></span>
             <span @click="addNote('todo')"><i class="fa-sharp fa-solid fa-book-open"></i></span>
-            <span @click="save(newNote)"><i class="fa-solid fa-floppy-disk"></i></span>
+            <span @click="save"><i class="fa-solid fa-floppy-disk"></i></span>
         </div>
 
 
@@ -67,11 +67,14 @@ export default {
                     break
             }
         },
-        save(newNote) {
-            if (newNote.type === 'note-img') newNote.info.url = this.txt
-            else if(newNote.type === 'note-txt' && newNote.info.todos.length) newNote.info.todos = this.todos
-            else newNote.info.txt = this.txt
-            noteService.save(newNote).then((note) => {
+        save() {
+            if (this.newNote.type === 'note-img') this.newNote.info.url = this.txt
+            else if(this.newNote.type === 'note-txt' && this.newNote.info.todos?.label) {
+                this.newNote.info.todos = this.todos
+                console.log(this.newNote.info.todos);
+            }
+            else this.newNote.info.txt = this.txt
+            noteService.save(this.newNote).then((note) => {
                 showSuccessMsg(`Note ${note.id} Added...`)
 
                 this.txt = ''

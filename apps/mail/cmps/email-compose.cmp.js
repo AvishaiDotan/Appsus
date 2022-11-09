@@ -27,7 +27,7 @@ export default {
             emailService.save(this.emailToEdit)
                 .then(email => {
                     showSuccessMsg(`email saved (email id: ${email.id})`)
-                    // this.$router.push('/email')
+                    
                 })
                 .catch(err => {
                     showErrorMsg(`Cannot save email`)

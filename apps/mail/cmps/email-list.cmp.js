@@ -6,17 +6,26 @@ import emailPreview from './email-preview.cmp.js'
 export default {
     props: ['emails'],
     template: `
-        <ul>
-            <li v-for="email in emailsToShow">
-                <email-preview 
-                    @click.stop="handleOpeningEmail(email)"  
-                    :email="email"/>
-            </li>
-        </ul>
+        <table>
+            <thead>
+                <tr class="headlines-container">
+                    <td v-for="headline in tableHeadlines" :title="headline">{{headline}}</td>
+                </tr>
+            </thead>
+            <table class="emails-container">
+                <tr v-for="email in emailsToShow" class="email-container">
+                    <email-preview 
+                        class="email-preview"
+                        @click.stop="handleOpeningEmail(email)"  
+                        :email="email"/>
+                </tr>
+            </table>
+        </table>
     `,
     data() {
         return {
-            filterBy: {}
+            filterBy: {},
+            tableHeadlines: ['Subject', 'Body', 'Time']
         }
     },
     methods: {

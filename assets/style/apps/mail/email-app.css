@@ -2,7 +2,7 @@
 @import './compose-mail.css';
 
 .email-app-container {
-    background-color: var(--mail-clr-3);
+    background-color: var(--clr-mail-background);
 }
 
 .email-app-container {  
@@ -12,7 +12,7 @@
     gap: 15px 15px;
     grid-auto-flow: row;
     grid-template-areas:
-      "email-logo email-search"
+      "email-logo main-header-features"
       "email-folder-list email-list"
       "email-folder-list email-list";
 }
@@ -21,7 +21,7 @@
   
 .email-logo { grid-area: email-logo; }
   
-.email-search { grid-area: email-search; }
+.main-header-features { grid-area: main-header-features; }
   
 .email-folder-list { grid-area: email-folder-list; }
   

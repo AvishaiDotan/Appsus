@@ -1,9 +1,11 @@
 :root {
 /* Gmail Color Pallet */
-  --mail-clr--1: black;
-  --mail-clr-0: #1076DA;
-  --mail-clr-1:: #C3E7FF;
-  --mail-clr-2:: #EAF1FB;
-  --mail-clr-3: #F7F8FC;
-  --mail-clr-4:  #FFFFFF;
+  --clr-mail-primary: #1076DA;
+  --clr-mail-secondary: #C3E7FF;
+  --clr-mail-light-secondary: #eaf1fb;
+  --clr-mail-background: #f6f8fc;
+
+  --clr-mail-2: black;
+  --clr-mail1: #e9e9e9;
+  --clr-mail2:  #FFFFFF;
 } 

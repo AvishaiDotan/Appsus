@@ -1,5 +1,6 @@
 /* Setup */
-@import 'setup/vars.css';
+@import './setup/reset.css';
+@import './setup/vars.css';
 @import 'setup/typography.css';
 
 /* Base */
@@ -20,6 +21,10 @@
 
 
 @import './apps/mail/email-app.css';
+
+@import './apps/mail/email-header.css';
+@import './apps/mail/email-search.css';
+@import './apps/mail/email-list.css';
 
 @import './apps/note/note-app.css';
 @import './apps//note/note-list.css';

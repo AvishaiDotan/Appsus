@@ -1,0 +1,36 @@
+.headlines-container {
+    display: grid;
+    grid-template-columns: 200px 1fr 80px;
+    grid-template-rows: 1fr;
+    gap: 0px 20px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        ". . .";
+    border-bottom: 0.1px var(--clr-mail1) solid;
+    align-items: center; 
+}
+
+.emails-container {
+    width: 100%;
+}
+
+.email-container {
+    display: grid;
+    grid-template-columns: 200px 1fr 80px;
+    grid-template-rows: 40px;
+    grid-auto-rows: 40px;
+    gap: 0px 20px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        ". . .";
+    align-items: center; 
+}
+
+
+.headlines-container td {
+    height: 40px;
+}
+
+.headlines-container td:last-child, .email-container td:last-child {
+    align-self: center;
+}

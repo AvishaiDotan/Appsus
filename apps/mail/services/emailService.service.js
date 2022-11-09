@@ -6,7 +6,7 @@ const EMAIL_KEY = 'emailDB'
 const email1 = {
     id: 'e101',
     subject: 'ABA!',
-    body: 'Would love to catch up sometimes',
+    body: 'Would love to catch up eeee',
     isRead: true,
     sentAt : 1551133930594,
     from: 'momo@momo.com',

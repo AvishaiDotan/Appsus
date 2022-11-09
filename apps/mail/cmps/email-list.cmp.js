@@ -39,7 +39,11 @@ export default {
     computed: {
         emailsToShow() {
             const regex = new RegExp(this.filterBy.name, 'i')
-            return this.emails.filter(email => !email.removedAt && regex.test(email.subject))
+            return this.emails.filter(email => 
+                !email.removedAt && 
+                regex.test(email.subject) ||
+                 regex.test(email.to) ||
+                 regex.test(email.body))
             // && 
         }
     },

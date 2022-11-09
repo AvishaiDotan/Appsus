@@ -1,30 +1,38 @@
-.headlines-container {
+.headlines-container {  
     display: grid;
-    grid-template-columns: 200px 1fr 80px;
-    grid-template-rows: 1fr;
-    gap: 0px 20px;
+    grid-template-columns: 20px 20px 200px 1fr 55.6px;
+    grid-template-rows: 40px;
+    grid-auto-rows: 40px;
+    gap: 0px 10px;
     grid-auto-flow: row;
+    align-items: center;
     grid-template-areas:
-        ". . .";
+      ". . . . .";
     border-bottom: 0.1px var(--clr-mail1) solid;
     align-items: center; 
 }
+
+.email-container {  
+    display: grid;
+    grid-template-columns: 20px 20px 200px 1fr 55.6px;
+    grid-template-rows: 40px;
+    grid-auto-rows: 40px;
+    gap: 0px 10px;
+    grid-auto-flow: row;
+    align-items: center;
+    grid-template-areas:
+      ". . . . .";
+    align-items: center; 
+    border-bottom: 0.1px var(--clr-mail1) solid;
+}
+
+  
 
 .emails-container {
     width: 100%;
 }
 
-.email-container {
-    display: grid;
-    grid-template-columns: 200px 1fr 80px;
-    grid-template-rows: 40px;
-    grid-auto-rows: 40px;
-    gap: 0px 20px;
-    grid-auto-flow: row;
-    grid-template-areas:
-        ". . .";
-    align-items: center; 
-}
+
 
 
 .headlines-container td {

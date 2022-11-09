@@ -41,12 +41,8 @@ export default {
         },
     },
     created() {
-        emailService.query()
-            .then(emails => {
-                this.emails = emails
-            }),
-            eventBus.on('close-email', () => { this.openedEmail = false })
-            
+        eventBus.on('close-email', () => { this.openedEmail = false })
+
     },
     components: {
         emailHeader,

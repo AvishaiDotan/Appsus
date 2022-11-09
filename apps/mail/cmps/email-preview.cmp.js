@@ -1,18 +1,30 @@
+import { emailService } from '../services/emailService.service.js';
+
 export default {
     props: ['email'],
     template: `
-            <td class="email-subject">{{email.subject}}</td>
-            <td :style="getReadStyle" class="email-body">{{email.body}}</td>
-            <td :style="getReadStyle" class="email-body">{{getDate}}</td>
+        <tr>
+            <td :title="getBookMarkTitle">
+                <img class="email-bookmark-icon" src="./assets/style/apps/mail/icons/bookmark-icon.png" alt="bookmark-icon"/>
+            </td>
+            <td :title="getStarTitle"  @click.stop="toggleStar">
+                <img class="email-star-icon" :src="getStarIcon" alt="star-icon" />
+            </td>
+            <td title="Subject" class="email-subject">{{email.subject}}</td>
+            <td title="Mail" class="email-body">{{email.body}}</td>
+            <td title="Date" class="email-body">{{getDate}}</td>
+        </tr>
     `,
-    data() {
-        return {
-
-        }
-    },
     computed: {
-        getReadStyle() {
-            return (this.email.isRead) ? { fontWeight: 400 } : { fontWeight: 900 }
+        getBookMarkTitle() {
+            return (this.email.isBookmark) ? 'Remove mark' : 'Mark'
+        },
+        getStarTitle() {
+            return (this.email.isStarred) ? 'Unstar' : 'Star'
+        },
+        getStarIcon() {
+            return (this.email.isStarred) ? "./assets/style/apps/mail/icons/starred-icon.png" :
+            "./assets/style/apps/mail/icons/star-icon.png"
         },
         getDate() {
             const emailDate = new Date(this.email.sentAt)
@@ -34,5 +46,9 @@ export default {
         }
     },
     methods: {
+        toggleStar() {
+            this.email.isStarred = !this.email.isStarred
+            emailService.save(this.email)
+        }
     }
 }

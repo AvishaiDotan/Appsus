@@ -4,7 +4,6 @@ import { eventBus } from '../../../services/event-bus.service.js';
 import emailPreview from './email-preview.cmp.js'
 
 export default {
-    props: ['emails'],
     template: `
         <table>
             <thead>
@@ -13,11 +12,13 @@ export default {
                 </tr>
             </thead>
             <table class="emails-container">
-                <tr v-for="email in emailsToShow" class="email-container">
+                <tr v-for="email in emailsToShow" >
                     <email-preview 
-                        class="email-preview"
                         @click.stop="handleOpeningEmail(email)"  
-                        :email="email"/>
+                        :email="email"  
+                        class="email-container"
+                        :class="{read: email.isRead}"
+                    />
                 </tr>
             </table>
         </table>
@@ -25,7 +26,8 @@ export default {
     data() {
         return {
             filterBy: {},
-            tableHeadlines: ['Subject', 'Body', 'Time']
+            tableHeadlines: ['', '', 'Subject', 'Body', 'Time'],
+            emails: [],
         }
     },
     methods: {
@@ -46,13 +48,20 @@ export default {
             if (filterBy.folder !== undefined) this.filterBy.folder = filterBy.folder
             console.log(this.filterBy);
         },
+        setEmails() {
+            emailService.query()
+            .then(emails => {
+                this.emails = emails
+            })
+        }
+
     },
     computed: {
         emailsToShow() {
             const regex = new RegExp(this.filterBy.txt, 'i')
 
             // Filter By Removed
-            let emails = this.emails.filter(email => 
+            let emails = this.emails.filter(email =>
 
                 // Filter By Removed
                 !email.removedAt &&
@@ -60,7 +69,7 @@ export default {
                 // Filter By txt
                 (regex.test(email.subject) ||
                     regex.test(email.to) || regex.test(email.body)))
-            
+
             // Filter By Folder   
             if (this.filterBy.folder) {
                 if (this.filterBy.folder === 'unread') {
@@ -72,16 +81,16 @@ export default {
                     return emails.filter(email => email[this.filterBy.folder])
                 }
             }
-
-
             return emails
-        }
+        },
     },
     components: {
         emailPreview,
     },
     created() {
+        this.setEmails()
         eventBus.on('set-filter', (filterBy) => { this.setFilter(filterBy) })
+        eventBus.on('save-error', () => {this.setEmails()})
     },
 
 }

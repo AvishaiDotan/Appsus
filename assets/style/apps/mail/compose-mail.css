@@ -1,0 +1,9 @@
+.compose-mail-modal {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    width: 550px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+}

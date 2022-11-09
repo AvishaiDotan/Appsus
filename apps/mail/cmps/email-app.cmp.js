@@ -8,15 +8,23 @@ import emailList from './email-list.cmp.js'
 
 export default {
     template:`
-        <email-header/>
-        <email-compose/>
-        <email-folder-list/>
-        <email-list :emails="emails"/>
-        <section>Im Mail</section>
+    <main class="email-app-container">
+        <email-header class="email-header"/>
+        <email-compose v-if="isCompose"/>
+        <email-folder-list @compose-mail="composeMailToggle" class="email-folder-list"/>
+        <email-list :emails="emails" class="email-list"/>
+    </main>
+
     `,
     data() {
         return {
-            emails: []
+            emails: [],
+            isCompose: false
+        }
+    },
+    methods: {
+        composeMailToggle() {
+            this.isCompose = !this.isCompose
         }
     },
     created() {
@@ -30,5 +38,6 @@ export default {
         emailCompose,
         emailFolderList,
         emailList,
+        emailCompose
     }
 }

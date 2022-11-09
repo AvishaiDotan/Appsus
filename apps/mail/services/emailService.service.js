@@ -44,10 +44,17 @@ function save(email) {
     }
 }
 
-function getEmptyEmail(vendor='', maxSpeed = 0) {
-    return { id: '', vendor, maxSpeed}
+function getEmptyEmail(subject, body, to) {
+    return {
+        id: '',
+        subject,
+        body: '',
+        isRead: false,
+        sentAt : Date.now(),
+        from: 'momo@momo.com',
+        to: ''
+    }
 }
-
 
 function getNextEmailId(emailId) {
     return storageService.query(EMAIL_KEY)

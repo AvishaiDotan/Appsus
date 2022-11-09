@@ -1,6 +1,8 @@
 export default {
     template:`
-        <section>Im email folder</section>
+        <section>
+            <button @click.stop="$emit('compose-mail')">Compose</button>
+        </section>
     `,
     data(){
         return {

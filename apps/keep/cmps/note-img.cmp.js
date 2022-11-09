@@ -1,8 +1,15 @@
 export default {
     props: ['note'],
     template: `
-        <article>
-            <h1>im {{note.type}}</h1>
+        <article class="note-img-preview">
+            <h3>im {{note.type}}</h3>
+            <img :src="imgUrl" />
         </article>
     `
+    ,
+    computed: {
+        imgUrl() {
+            return this.note.info.url
+        }
+    }
 }

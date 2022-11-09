@@ -1,0 +1,8 @@
+.note-txt-preview {
+    background-color: antiquewhite;
+}
+
+.note-img-preview img{
+    object-fit: cover;
+    width: 100%;
+}

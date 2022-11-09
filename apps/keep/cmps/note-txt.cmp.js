@@ -1,8 +1,8 @@
 export default {
     props:['note'],
     template:`
-        <article>
-            <h1>im {{note.type}}</h1>
+        <article class="note-txt-preview">
+            <h3>{{note.info.txt || note.info.label}}</h3>
         </article>
     `
 }

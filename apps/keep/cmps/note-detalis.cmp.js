@@ -1,8 +1,6 @@
 import noteTxtDetails from "./note-txt-details.cmp.js"
 import noteImgDetails from "./note-img-details.cmp.js"
 
-import { eventBus } from "../../../services/event-bus.service.js"
-
 export default {
     props: ['note'],
     template: `

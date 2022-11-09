@@ -6,3 +6,9 @@
     object-fit: cover;
     width: 100%;
 }
+
+.note-preview {
+    break-inside: avoid;
+    border: 2px solid black;
+    margin: 5px 0;
+}

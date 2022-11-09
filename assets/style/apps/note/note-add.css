@@ -1,0 +1,13 @@
+.add-note {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.add-note >* {
+    margin-inline-end: 5px;
+}
+
+.add-note span {
+    font-size: 1.5rem;
+}

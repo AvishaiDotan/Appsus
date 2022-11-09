@@ -33,6 +33,7 @@ const email3 = {
     to: 'user@appsus.com'
 }
 
+
 _createEmails()
 
 export const emailService = {

@@ -15,7 +15,7 @@ export default {
     },
     methods: {
         setFilter(filterBy) {
-            eventBus.emit('set-filter', {name: filterBy})
+            eventBus.emit('set-filter', {txt: filterBy})
         }
     }
 }

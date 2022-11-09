@@ -1,9 +1,17 @@
+import { eventBus } from "../../../services/event-bus.service.js"
+
+
 export default {
     props: ['emails'],
     template:`
         <section>
             <p>count {{ unreadEmailsCount }}</p>
             <button @click.stop="$emit('compose-mail')">Compose</button>
+            <div class="email-folders-container">
+                <button @click="setFilter({folder: ''})">all</button>
+                <button @click="setFilter({folder: 'isRead'})">Read</button>
+                <button @click="setFilter({folder: 'unread'})">Unread</button>
+            </div>
         </section>
     `,
     data(){
@@ -22,6 +30,9 @@ export default {
         }
     },
     methods: {
+        setFilter(filterBy) {
+            eventBus.emit('set-filter', filterBy)
+        }
     },
     created() {
     },

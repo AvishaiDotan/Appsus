@@ -9,7 +9,7 @@ import emailDetails from '../cmps/email-details.cmp.js'
 
 
 export default {
-    template:`
+    template: `
     <main class="email-app-container">
         <email-header/>
         <email-compose v-if="isCompose"/>
@@ -29,7 +29,7 @@ export default {
         return {
             emails: [],
             isCompose: false,
-            openedEmail: null
+            openedEmail: null,
         }
     },
     methods: {
@@ -38,15 +38,15 @@ export default {
         },
         setOpenEmail(email) {
             this.openedEmail = email
-        }
+        },
     },
     created() {
         emailService.query()
             .then(emails => {
                 this.emails = emails
             }),
-        eventBus.on('close-email', () => {this.openedEmail = false})
-        
+            eventBus.on('close-email', () => { this.openedEmail = false })
+            
     },
     components: {
         emailHeader,

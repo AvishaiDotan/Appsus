@@ -1,10 +1,12 @@
 import homePage from './views/app-home.cmp.js'
 import aboutPage from './views/app-about.cmp.js'
 import mailApp from './apps/mail/pages/email-app.cmp.js'
-import emailDetails from './apps/mail/pages/email-details.cmp.js'
+import keepApp from './apps/keep/cmps/keep-app.cmp.js'
+
+import emailList from './apps/mail/cmps/email-list.cmp.js'
+import emailDetails from './apps/mail/cmps/email-details.cmp.js'
 
 import keepApp from './apps/keep/cmps/keep-app.cmp.js'
-// import noteDetalis from './apps/keep/cmps/note-detalis.cmp.js'
 import noteEdit from './apps/keep/cmps/note-edit.cmp.js'
 
 

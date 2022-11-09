@@ -3,7 +3,7 @@ export default {
     template:`
         <div>
             <span class="email-subject">{{email.subject}}</span>
-            <span class="email-body">{{email.body}}</span>
+            <span :style="getReadStyle" class="email-body">{{email.body}}</span>
         </div>
     `,
     data(){
@@ -12,6 +12,9 @@ export default {
         }
     },
     computed:{
+        getReadStyle() {
+            return (this.email.isRead) ? {fontWeight: 400} : {fontWeight: 900}
+        }
     },
     methods: {
     }

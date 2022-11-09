@@ -3,9 +3,29 @@ import { storageService } from '../../../services/async-storage.service.js'
 
 const EMAIL_KEY = 'emailDB'
 
-const email = {
+const email1 = {
     id: 'e101',
-    subject: 'Miss you!',
+    subject: 'ABA!',
+    body: 'Would love to catch up sometimes',
+    isRead: true,
+    sentAt : 1551133930594,
+    from: 'momo@momo.com',
+    to: 'user@appsus.com'
+}
+
+const email2 = {
+    id: 'e101',
+    subject: 'C++!',
+    body: 'Would love to catch up sometimes',
+    isRead: false,
+    sentAt : 1551133930594,
+    from: 'momo@momo.com',
+    to: 'user@appsus.com'
+}
+
+const email3 = {
+    id: 'e101',
+    subject: 'ReWrite!',
     body: 'Would love to catch up sometimes',
     isRead: false,
     sentAt : 1551133930594,
@@ -68,7 +88,7 @@ function getNextEmailId(emailId) {
 function _createEmails() {
     let emails = utilService.loadFromStorage(EMAIL_KEY)
     if (!emails || !emails.length) {
-        emails = [email, email, email]
+        emails = [email1, email2, email3]
         utilService.saveToStorage(EMAIL_KEY, emails)
     }
     return emails

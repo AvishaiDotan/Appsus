@@ -1,7 +1,9 @@
+import { eventBus } from "../../../services/event-bus.service.js"
+
 export default {
     template:`
         <section class="email-search">
-            <input type="search" name="" id="" />
+            <input @input.prevent="setFilter($event.target.value)" title="Search Email" type="search"/>
         </section>
     `,
     data(){
@@ -12,5 +14,8 @@ export default {
     computed:{
     },
     methods: {
+        setFilter(filterBy) {
+            eventBus.emit('set-filter', {name: filterBy})
+        }
     }
 }

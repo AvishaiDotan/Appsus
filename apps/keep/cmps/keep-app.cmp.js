@@ -1,14 +1,15 @@
 import { noteService } from '../services/note.service.js'
+import { showErrorMsg, showSuccessMsg } from '../../../services/event-bus.service.js'
 
 import noteList from './note-list.cmp.js'
-import noteAdd from './note-add.cmp.js'
+import noteEdit from './note-edit.cmp.js'
 
 export default {
     template: `
         <section class="note-app">Im Keep
-        <note-add/>
+        <note-edit @add="addNew"/>
         <note-list v-if="notes.length" 
-            :notes="notes"/>
+            :notes="notes" @save="save"/>
         </section>
     `,
     data() {
@@ -23,7 +24,15 @@ export default {
             })
     },
     methods: {
-
+        save(note) {
+            noteService.save(note).then((note) => {
+                showSuccessMsg(`Note ${note.id} saved...`)
+            }
+            )
+        },
+        addNew(note) {
+            this.notes.push(note)
+        }
     },
     computed: {
         notesToShow() {
@@ -32,6 +41,6 @@ export default {
     },
     components: {
         noteList,
-        noteAdd
+        noteEdit
     }
 }

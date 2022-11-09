@@ -8,9 +8,9 @@
     border-radius: 20px;
     background-color: transparent;
     z-index: 1;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
+    /* text-align: center; */
+    /* display: flex;
+    flex-direction: column; */
     /* padding: 10px; */
 }
 

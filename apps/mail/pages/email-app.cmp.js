@@ -10,7 +10,7 @@ import emailDetails from '../cmps/email-details.cmp.js'
 
 export default {
     template: `
-        <email-compose v-if="isCompose"/>
+    <email-compose v-if="isCompose"/>
     <main class="email-app-container">
         <email-header/>
         <email-folder-list 

@@ -1,9 +1,26 @@
 .compose-mail-modal {
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
     width: 550px;
-    height: 600px;
     display: flex;
     flex-direction: column;
+    z-index: 5;
+    box-shadow: 0px 8px 10px 1px rgb(0 0 0 / 14%), 0px 3px 14px 2px rgb(0 0 0 / 12%), 0px 5px 5px -3px rgb(0 0 0 / 20%);
+}
+
+.compose-mail-modal header {
+    background-color: var(--clr-mail-secondary);
+    height: 40px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.compose-mail-modal input {
+    width: 100%;
+
+    padding: 10px;
+
 }

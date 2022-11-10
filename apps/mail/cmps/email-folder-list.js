@@ -14,11 +14,6 @@ export default {
             </div>
         </section>
     `,
-    data(){
-        return {
-           
-        }
-    },
     computed:{
         // Use Reduce
         unreadEmailsCount() {
@@ -33,8 +28,5 @@ export default {
         setFilter(filterBy) {
             eventBus.emit('set-filter', filterBy)
         }
-    },
-    created() {
-
     },
 }

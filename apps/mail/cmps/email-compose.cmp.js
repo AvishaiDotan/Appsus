@@ -4,15 +4,22 @@ import { eventBus, showErrorMsg, showSuccessMsg } from "../../../services/event-
 export default {
     template: `
             <form @submit.prevent="sendMail" class="compose-mail-modal">
-                <header class="compose-mail-header">New Message</header>
+                <header class="compose-mail-header">
+                    <p>New Message</p>
+                    <span>X</span>
+                </header>
                 <label>
                     <input v-model="emailToEdit.to" ref="sendTo" type="text" title="Send To" placeholder="To:"/>
                 </label>
                 <label>
                     <input v-model="emailToEdit.subject" type="text" title="Send To" placeholder="Subject:"/>
                 </label>
-                <textarea v-model="emailToEdit.body" cols="30" rows="10" placeholder="Mail Body:"></textarea>
-                <button title="send">Send</button>
+                <div>
+                    <textarea v-model="emailToEdit.body" cols="30" rows="10" placeholder="Mail Body:"></textarea>
+                </div>
+                <div>
+                    <button title="send">Send</button>
+                </div>
             </form>
     `,
     data() {

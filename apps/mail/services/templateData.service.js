@@ -1,3 +1,7 @@
+export const templateData = {
+    getTemplateEmail
+}
+
 const subjects = [
     'Dribbble',
     'LinkedIn Job Alerts',
@@ -103,13 +107,26 @@ const bodys = [
   'Mayan just messaged you',
 ]
 
-function getTemplateDate() {
-    const templateDate = []
+const headlines = [
+    'Books say: She did this because',
+    'Thousands of candles can be lighted from a single candle',
+    'Learn from yesterday, live for today, hope for tomorrow',
+    'Love takes off the masks that we fear we cannot live without and know we cannot live within',
+    'Sometimes the questions are complicated, and the answers are simple',
+    'What gets us into trouble is not what we don’t know. It’s what we know for sure that just ain’t so.',
+    'Anyone who has never made a mistake has never tried anything new.',
+    'Knowing what must be done does away with fear.',
+    'Holding onto your anger is like drinking poison and expecting the other person to die',
+]
+
+function getTemplateEmail() {
+    const templateData = []
     for (let i = 0; i < 10; i++) {
-        templateDate.push({
+        templateData.push({
             id: _makeId(),
             subject: subjects[getRandomIntInclusive(0, subjects.length - 1)],
             body: bodys[getRandomIntInclusive(0, bodys.length - 1)],
+            headline: headlines[getRandomIntInclusive(0, headlines.length - 1)],
             isRead: (Math.random() > 0.5),
             isStarred: (Math.random() > 0.5),
             isBookmarked: (Math.random() > 0.5),
@@ -118,6 +135,7 @@ function getTemplateDate() {
             to: 'user@appsus.com'
         })
     }
+    return templateData
 }
 
 function _makeId(length = 5) {

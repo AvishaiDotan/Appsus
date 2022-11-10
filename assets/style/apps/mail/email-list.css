@@ -8,8 +8,8 @@
     align-items: center;
     grid-template-areas:
       ". . . . .";
-    border-bottom: 0.1px var(--clr-mail1) solid;
     align-items: center; 
+    transition: 0.6s;
 }
 
 .email-container {  
@@ -24,6 +24,7 @@
       ". . . . .";
     align-items: center; 
     border-bottom: 0.1px var(--clr-mail1) solid;
+    transition: 0.6s;
 }
 
 .emails-container {
@@ -40,4 +41,8 @@
 
 .headline {
     cursor: pointer;
+}
+
+.sort-icon {
+    height: 20px;
 }

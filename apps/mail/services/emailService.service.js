@@ -1,5 +1,6 @@
 import { utilService } from '../../../services/util.service.js'
 import { storageService } from '../../../services/async-storage.service.js'
+import { templateData } from './templateData.service.js'
 
 const EMAIL_KEY = 'emailDB'
 
@@ -17,41 +18,6 @@ const email1 = {
     to: 'user@appsus.com'
 }
 
-const email2 = {
-    id: 'e103',
-    subject: 'C++!',
-    body: 'Would love to catch up sometimes',
-    isRead: false,
-    isStarred: true,
-    isBookmarked: true,
-    sentAt : 1551133930594,
-    from: 'momo@momo.com',
-    to: 'user@appsus.com'
-}
-
-const email4 = {
-    id: 'e125',
-    subject: 'C++!',
-    body: 'Would love to catch up sometimes',
-    isRead: false,
-    isStarred: true,
-    isBookmarked: false,
-    sentAt : 1551133930594,
-    from: 'momo@momo.com',
-    to: 'user@appsus.com'
-}
-
-const email3 = {
-    id: 'e104',
-    subject: 'ReWrite!',
-    body: 'Would love to catch up sometimes',
-    isRead: false,
-    isStarred: true,
-    isBookmarked: false,
-    sentAt : 1551133930594,
-    from: 'momo@momo.com',
-    to: 'user@appsus.com'
-}
 
 
 _createEmails()
@@ -109,7 +75,8 @@ function getNextEmailId(emailId) {
 function _createEmails() {
     let emails = utilService.loadFromStorage(EMAIL_KEY)
     if (!emails || !emails.length) {
-        emails = [email1, email2, email3, email4]
+        emails = [...templateData.getTemplateEmail()]
+        console.log(emails);
         utilService.saveToStorage(EMAIL_KEY, emails)
     }
     return emails

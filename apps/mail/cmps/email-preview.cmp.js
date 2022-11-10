@@ -4,7 +4,7 @@ export default {
     props: ['email'],
     template: `
         <tr>
-            <td :title="bookMarkTitle" @click.stop="toggleProperty('isBookmarked')">
+            <td  :title="bookMarkTitle" @click.stop="toggleProperty('isBookmarked')">
                 <img class="email-bookmark-icon" 
                 :class="{unselected: !email.isBookmarked}"
                 :src="bookmarkIcon"
@@ -20,8 +20,8 @@ export default {
 
             <td title="Subject" class="email-subject">{{email.subject}}</td>
             <td title="Mail" class="email-body">{{email.body}}</td>
-            <td title="Date" class="email-body">{{getDate}}</td>
-            <div :style="actionsBackgroundColor" class="email-preview-actions">
+            <td v-if="isActionsDisplay" title="Date" class="email-body">{{getDate}}</td>
+            <div :style="actionsBackgroundColor" ref="actionsContainer" class="email-preview-actions">
                 <span>
                     <img @click.stop="deleteEmail"
                      src="./assets/style/apps/mail/icons/trash-icon.png"
@@ -57,8 +57,6 @@ export default {
         actionsBackgroundColor() {
             return { backgroundColor: (this.email.isRead) ? 'var(--clr-mail-light-secondary)' : 'var( --clr-mail-background)' }
         },
-
-
         getDate() {
             const emailDate = new Date(this.email.sentAt)
             const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "June",
@@ -73,9 +71,13 @@ export default {
                 const minutes = (emailDate.getMinutes() < 10) ? '0' + emailDate.getMinutes() : emailDate.getMinutes()
                 return hour + ':' + minutes
             } else {
-                return monthNames[emailDate.getMonth()] + ' ' + emailDate.getDay()
+                return monthNames[emailDate.getMonth()] + ' ' + (emailDate.getDay() + 1)
             }
 
+        }
+    },
+    data() {
+        return {
         }
     },
     methods: {
@@ -94,6 +96,12 @@ export default {
         deleteEmail() {
             this.email.removedAt = Date.now()
             emailService.save(this.email)
+        },
+        isActionsDisplay() {
+            return this.$refs.actionsContainer.style.display === 'flex'
         }
-    }
+    },
+    mounted() {
+        console.log();
+    },
 }

@@ -8,7 +8,14 @@ export default {
         <table>
             <thead>
                 <tr class="headlines-container">
-                    <td class="headline" v-for="headline in tableHeadlines" @click.stop="setSort(headline)" :title="headline">{{headline}}</td>
+                    <td></td>
+                    <td></td>
+                    <td class="headline" @click.stop="setSort('subject')" title="Sort">
+                        <img :src="sortImg" alt="sort-icon" class="sort-icon" />
+                    </td>
+                    <td></td>
+                    <td class="headline" @click.stop="setSort(headlineTxt)" title="Sent Time" >Time</td>
+                    <!-- <td class="headline" v-for="headlineTxt in tableHeadlines" @click.stop="setSort(headlineTxt)" :title="headline">{{headline}}</td> -->
                 </tr>
             </thead>
             <table class="emails-container">
@@ -27,7 +34,7 @@ export default {
         return {
             filterBy: {},
             sortBy: {type: '', descending: true},
-            tableHeadlines: ['', '', 'subject', 'body', 'time'],
+            tableHeadlines: ['', '', 'a-z', '', 'time'],
             emails: [],
         }
     },
@@ -60,6 +67,7 @@ export default {
         setSort(sortBy) {
             if (this.sortBy.type === sortBy) this.sortBy.descending = !this.sortBy.descending
             this.sortBy.type = sortBy
+            console.log(this.sortBy);
         }
 
 
@@ -102,6 +110,10 @@ export default {
 
             return emails
         },
+        sortImg() {
+            return  (this.sortBy.descending) ? `./assets/style/apps/mail/icons/arrow-down-a-z-solid.svg` :
+                `./assets/style/apps/mail/icons/arrow-up-a-z-solid.svg`
+        }
     },
     components: {
         emailPreview,

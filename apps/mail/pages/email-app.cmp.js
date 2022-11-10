@@ -10,7 +10,7 @@ import emailDetails from '../cmps/email-details.cmp.js'
 
 export default {
     template: `
-    <main class="email-app-container">
+    <main v-if="emails" class="email-app-container">
         <email-header/>
         <email-folder-list 
         :emails="emails" 
@@ -25,7 +25,8 @@ export default {
             @setEmails="setEmails"
             :emails="emails" 
             class="email-list"/>
-        <email-details v-else="!openedEmail" :email="openedEmail"/>
+        <!-- <email-details v-else="!openedEmail" :email="openedEmail"/> -->
+        <email-details v-else="openedEmail" :email="openedEmail"/>
         
     </main>
 

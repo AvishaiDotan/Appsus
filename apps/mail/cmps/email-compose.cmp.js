@@ -56,6 +56,8 @@ export default {
             this.emailToEdit.headline = this.emailToEdit.subject
             this.emailToEdit.sentAt = Date.now()
             this.emailToEdit.isRead = true
+
+            this.emailToEdit.isSent = true
             
             emailService.save(this.emailToEdit)
                 .then(email => {

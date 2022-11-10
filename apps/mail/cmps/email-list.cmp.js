@@ -54,7 +54,6 @@ export default {
         setFilter(filterBy) {
             if (filterBy.txt !== undefined) this.filterBy.txt = filterBy.txt
             if (filterBy.folder !== undefined) this.filterBy.folder = filterBy.folder
-            console.log(this.filterBy);
         },
         setEmails() {
             emailService.query()
@@ -67,7 +66,6 @@ export default {
         setSort(sortBy) {
             if (this.sortBy.type === sortBy) this.sortBy.descending = !this.sortBy.descending
             this.sortBy.type = sortBy
-            console.log(this.sortBy);
         }
 
 
@@ -76,24 +74,23 @@ export default {
         emailsToShow() {
             const regex = new RegExp(this.filterBy.txt, 'i')
 
-            // Filter By Removed
-            let emails = this.emails.filter(email =>
+            
+            let emails = this.emails.filter(email => {
 
+                const byName = (regex.test(email.subject) || regex.test(email.to) || regex.test(email.body))
+                // Filter By Removed & RemoveState
+                if (!this.filterBy.folder) return byName && email.removedAt === 0
                 // Filter By Removed
-                !email.removedAt &&
+                return byName
 
-                // Filter By txt
-                (regex.test(email.subject) ||
-                    regex.test(email.to) || regex.test(email.body)))
+            })
 
             // Filter By Folder   
             if (this.filterBy.folder) {
                 if (this.filterBy.folder === 'unread') {
-
                     emails = emails.filter(email => !email['isRead'])
 
                 } else if (this.filterBy.folder) {
-
                     emails = emails.filter(email => email[this.filterBy.folder])
                 }
             }

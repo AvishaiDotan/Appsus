@@ -61,6 +61,8 @@ function getEmptyEmail(subject, body, to) {
         isRead: false,
         isStarred: false,
         isBookmarked: false,
+        isSent: false,
+        removedAt: 0,
         sentAt : '',
         from: 'Avishai@momo.com',
         to: ''

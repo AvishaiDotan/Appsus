@@ -23,7 +23,7 @@ export default {
             <td v-if="isActionsDisplay" title="Date" class="email-body">{{getDate}}</td>
             <div :style="actionsBackgroundColor" ref="actionsContainer" class="email-preview-actions">
                 <span>
-                    <img @click.stop="deleteEmail"
+                    <img v-if="!email.removedAt" @click.stop="deleteEmail"
                      src="./assets/style/apps/mail/icons/trash-icon.png"
                       alt="trash-icon" />
                 </span>

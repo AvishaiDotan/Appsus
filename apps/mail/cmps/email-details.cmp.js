@@ -12,7 +12,7 @@ export default {
                     </span>
                 </div>
                 <div class="flex justify-even">
-                    <span @click.stop="deleteEmail" title="Delete">
+                    <span v-if="!email.removedAt" @click.stop="deleteEmail" title="Delete">
                         <img class="delete-email-icon" src="./assets/style/apps/mail/icons/trash-icon.png" alt="Delete Icon" />
                     </span>
                     <span :title="bookMarkTitle" @click.stop="toggleProperty('isBookmarked')">

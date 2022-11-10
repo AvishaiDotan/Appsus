@@ -108,3 +108,7 @@
     filter: none;
     cursor: pointer;
 }
+
+.compose-mail-header p {
+    margin: 0;
+}

@@ -18,7 +18,7 @@ export default {
                     <!-- <td class="headline" v-for="headlineTxt in tableHeadlines" @click.stop="setSort(headlineTxt)" :title="headline">{{headline}}</td> -->
                 </tr>
             </thead>
-            <table class="emails-container">
+            <tbody class="emails-container">
                 <tr v-for="email in emailsToShow" >
                     <email-preview 
                         @click.stop="handleOpeningEmail(email)"  
@@ -27,7 +27,7 @@ export default {
                         :class="{read: email.isRead}"
                     />
                 </tr>
-            </table>
+            </tbody>
         </table>
     `,
     data() {

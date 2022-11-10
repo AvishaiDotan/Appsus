@@ -76,10 +76,6 @@ export default {
 
         }
     },
-    data() {
-        return {
-        }
-    },
     methods: {
         toggleStar() {
 
@@ -100,8 +96,5 @@ export default {
         isActionsDisplay() {
             return this.$refs.actionsContainer.style.display === 'flex'
         }
-    },
-    mounted() {
-        console.log();
     },
 }

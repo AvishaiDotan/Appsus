@@ -35,7 +35,11 @@ export default {
             <section class="email-content" >
                 <p class="email-headline">{{ email.headline }}</p>
                 <img class="sender-img" :src="email.senderIconImgUrl" alt="sender-img" />
-                <p class="email-subject"><span>{{ email.subject }}</span> <span class="email-from"><{{ email.from }}></span> <span class="email-sent-time"> {{sentDate}} </span> </p>
+                <p class="email-subject">
+                    <span>{{ email.subject }}</span>
+                    <span class="email-from">from:    {{ email.from }}</span>
+                    <span class="email-sent-time"> {{sentDate}} </span> 
+                </p>
                 <p>{{ email.body }}</p>
             </section>
         </section>
@@ -47,14 +51,14 @@ export default {
         },
         bookmarkIcon() {
             return (this.email.isBookmarked) ? "./assets/style/apps/mail/icons/bookmarked-icon.png" :
-            "./assets/style/apps/mail/icons/bookmark-icon.png" 
+                "./assets/style/apps/mail/icons/bookmark-icon.png"
         },
         starTitle() {
             return (this.email.isStarred) ? 'Unstar' : 'Star'
         },
         starIcon() {
             return (this.email.isStarred) ? "./assets/style/apps/mail/icons/starred-icon.png" :
-            "./assets/style/apps/mail/icons/star-icon.png"
+                "./assets/style/apps/mail/icons/star-icon.png"
         },
         sentDate() {
             const emailDate = new Date(this.email.sentAt)
@@ -64,9 +68,9 @@ export default {
             // If Pass By Year
             if (new Date().getFullYear() - emailDate.getFullYear() > 1) {
                 return monthNames[emailDate.getMonth()] + ' ' + emailDate.getFullYear()
-            // If Pass By Less Then 24 Hours 
-            } else if (new Date() - emailDate < 1000 * 60 * 60 * 24){
-                const hour = (emailDate.getHours() < 10) ? '0' + emailDate.getHours() : emailDate.getHours() 
+                // If Pass By Less Then 24 Hours 
+            } else if (new Date() - emailDate < 1000 * 60 * 60 * 24) {
+                const hour = (emailDate.getHours() < 10) ? '0' + emailDate.getHours() : emailDate.getHours()
                 const minutes = (emailDate.getMinutes() < 10) ? '0' + emailDate.getMinutes() : emailDate.getMinutes()
                 return hour + ':' + minutes
             } else {
@@ -86,10 +90,10 @@ export default {
             this.unselectEmail()
         },
         toggleProperty(property) {
-            
+
             this.email[property] = !this.email[property]
             emailService.save(this.email)
-            
+
         },
     },
 }

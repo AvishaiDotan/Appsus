@@ -121,7 +121,7 @@ const headlines = [
 
 function getTemplateEmail() {
     const templateData = []
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 100; i++) {
         templateData.push({
             id: _makeId(),
             senderIconImgUrl: `./assets/style/apps/mail/icons/user-icon-${getRandomIntInclusive(1, 4)}.png`,

@@ -17,7 +17,11 @@
       "email-folder-list email-list";
 }
   
-.email-list { grid-area: email-list; }
+.email-list { 
+    grid-area: email-list;
+    display: block;
+    overflow-y: auto;
+}
   
 .email-logo { grid-area: email-logo; }
   

@@ -17,6 +17,10 @@
     margin-block-end: 20px;
 }
 
+.email-details-header > *:hover {
+    cursor: pointer;
+}
+
 .email-details-header img {
     height: 15px;
 }
@@ -28,11 +32,16 @@
 .email-details .email-content {
     margin-block-end: 20px;
     padding-inline: 80px;
+    height: calc(100vh - 286px);
+    overflow-y: auto;
 }
 
 .email-details .email-subject {
-    display: flex;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: max-content 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-template-areas: ". . .";
 }
 
 .email-details .email-subject span:first-child {
@@ -45,10 +54,19 @@
       overflow: hidden;
       text-overflow: ellipsis;
       display: inline-block;
+      margin-inline-start: 30px;
+}
+
+.email-details .email-sent-time {
+    justify-self: self-end;
 }
 
 .email-details .sender-img {
   width: 31px;
   position: absolute;
   transform: translateX(-200%);
+}
+
+.email-details .email-star-icon:hover, .email-details .email-bookmark-icon:hover {
+    filter: none;
 }

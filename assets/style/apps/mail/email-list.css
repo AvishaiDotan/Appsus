@@ -1,3 +1,7 @@
+.email-list thead {
+    display: block;
+}
+
 .headlines-container {  
     display: grid;
     grid-template-columns: 20px 20px 200px 1fr 55.6px;
@@ -12,6 +16,8 @@
     transition: 0.6s;
 }
 
+
+
 .email-container {  
     display: grid;
     grid-template-columns: 20px 20px 200px 1fr 55.6px;
@@ -25,10 +31,13 @@
     align-items: center; 
     border-bottom: 0.1px var(--clr-mail1) solid;
     transition: 0.6s;
+    
 }
 
 .emails-container {
     width: 100%;
+    display: block;
+    height: calc(100vh - 199px);
 }
 
 .headlines-container td {

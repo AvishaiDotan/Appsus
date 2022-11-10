@@ -10,14 +10,12 @@ export default {
                 <li v-for="note in notes" :key="note.id">
                         <note-preview v-if="note.isPinned" :note="note" @click="pickNote(note)" @togglePin="togglePin" @remove="remove"/>
                         <note-detalis v-if="note.isPicked" class="note-details" :note="note" @save="save(note)"/>
-                        <!-- <router-view></router-view> -->
                 </li>
         </ul>
             <ul class="clean-list note-list">
                 <li v-for="note in notes" :key="note.id">
                         <note-preview v-if="!note.isPinned" :note="note" @click="pickNote(note)" @togglePin="togglePin" @remove="remove"/>
                         <note-detalis v-if="note.isPicked" class="note-details" :note="note" @save="save(note)"/>
-                        <!-- <router-view></router-view> -->
                 </li>
             </ul>
         </section>

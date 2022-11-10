@@ -76,6 +76,7 @@ export default {
                 this.txt = ''
                 this.$emit('add', note)
             })
+            this.newNote = noteService.getEmptyNote('note-txt', false, { txt: this.txt }, null)
         },
         addTodo() {
             this.newNote.info.todos.push({ txt: "", doneAt: null })

@@ -28,7 +28,6 @@
 .note-preview {
     break-inside: avoid;
     border: 1px solid rgb(162, 161, 161);
-    margin: 5px 0;
     transition: .4s;
     border-radius: 10px;
     /* padding-top: 5px; */
@@ -50,6 +49,12 @@
     opacity: 1;
     visibility: visible;
 }
+
+.note-preview:hover::after .toolbar{
+    opacity: 1;
+    visibility: visible;
+}
+
 
 .note-preview h1,
 .note-preview h2,

@@ -10,7 +10,7 @@ import { showErrorMsg, showSuccessMsg } from '../../../services/event-bus.servic
 export default {
     props: ['note'],
     template: `
-        <article class="note-preview" :class="setColor">
+        <article class="note-preview" :class="setColor" @mouseleave="isMouseOver(false)" @mouseover="isMouseOver(true)">
             <component :is="note.type" :note="note" @todoDone="updateTodo(note)">
             </component>
             <note-edit-toolbar :note="note" @changeColor="changeColor" @togglePin="togglePin" @remove="remove"/>
@@ -18,7 +18,8 @@ export default {
     `,
     data() {
         return {
-            color: null
+            color: null,
+            hover: false
         }
     },
     methods: {
@@ -37,7 +38,13 @@ export default {
                 showSuccessMsg(`Note ${id} Deleted...`)
                 this.$emit('remove', id)
             })
+        },
+        isMouseOver(isOver) {
+            console.log(isOver);
+            this.note.isMouseOver = isOver
+            if(!isOver) this.note.ispalateClicked = false
         }
+        
     },
     computed: {
         setColor() {

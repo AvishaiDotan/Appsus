@@ -6,20 +6,38 @@ export default {
             <form @submit.prevent="sendMail" class="compose-mail-modal">
                 <header class="compose-mail-header">
                     <p>New Message</p>
-                    <span>X</span>
+                    <img class="x-icon" @click.stop="$emit('compose-mail')" src="./assets/style/apps/mail/icons/close-icon.png" alt="Close" title="Close" />
                 </header>
-                <label>
-                    <input v-model="emailToEdit.to" ref="sendTo" type="text" title="Send To" placeholder="To:"/>
-                </label>
-                <label>
-                    <input v-model="emailToEdit.subject" type="text" title="Send To" placeholder="Subject:"/>
-                </label>
-                <div>
-                    <textarea v-model="emailToEdit.body" cols="30" rows="10" placeholder="Mail Body:"></textarea>
-                </div>
-                <div>
-                    <button title="send">Send</button>
-                </div>
+                <section class="actions-container">
+                    <label>
+                        <input v-model="emailToEdit.to"
+                               ref="sendTo" 
+                               type="text" 
+                               title="Send To" 
+                               placeholder="To:"/>
+                    </label>
+                    <label>
+                        <input 
+                        v-model="emailToEdit.subject" 
+                        type="text" 
+                        title="Send To" 
+                        placeholder="Subject:"/>
+                    </label>
+                    <div>
+                        <textarea 
+                        v-model="emailToEdit.body" 
+                        cols="30" rows="10" 
+                        placeholder="Mail Body:"></textarea>
+                    </div>
+                    <div class="send-delete-actions">
+                        <button @click.stop="sendMail" class="send-btn" title="send">Send</button>
+                        <img @click.stop="$emit('compose-mail')"
+                        class="trash-icon" 
+                        src="./assets/style/apps/mail/icons/trash-icon.png" 
+                        alt="trash-icon" 
+                        title="Trash"/>
+                    </div>
+                </section>
             </form>
     `,
     data() {
@@ -40,7 +58,7 @@ export default {
                     showErrorMsg(`Cannot save email`)
                 })
 
-        }
+        },
     },
 
     mounted() {

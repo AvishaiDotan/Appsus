@@ -10,14 +10,14 @@ import emailDetails from '../cmps/email-details.cmp.js'
 
 export default {
     template: `
-    <email-compose v-if="isCompose"/>
     <main class="email-app-container">
         <email-header/>
         <email-folder-list 
-            :emails="emails" 
-            @compose-mail="composeMailToggle" 
-            class="email-folder-list"
+        :emails="emails" 
+        @compose-mail="composeMailToggle" 
+        class="email-folder-list"
         />
+        <email-compose v-if="isCompose" @compose-mail="composeMailToggle"/>
         
         <email-list 
             v-if="!openedEmail" 

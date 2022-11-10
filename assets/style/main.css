@@ -1,13 +1,13 @@
 /* Setup */
 @import './setup/vars.css';
 @import 'setup/typography.css';
+@import './setup/reset.css';
 
 /* Base */
 @import 'base/base.css';
 @import 'base/helpers.css';
 @import 'base/layout.css';
 @import 'base/forms.css';
-@import './setup/reset.css';
 
 /* General Components */
 @import 'cmps/home-page.css';

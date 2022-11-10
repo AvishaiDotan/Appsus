@@ -14,21 +14,12 @@ export default {
             </div>
         </div>
         <div class="add-actions">
-            <span @click="addNote('txt')"><i class="fa-solid fa-font"></i></span>
-            <span @click="addNote('img')"><i class="fa-solid fa-image"></i></span>
-            <span @click="addNote('todo')"><i class="fa-sharp fa-solid fa-book-open"></i></span>
-            <span @click="save"><i class="fa-solid fa-floppy-disk"></i></span>
+            <span @click="addNote('txt')" title="Add Text"><i class="fa-solid fa-font"></i></span>
+            <span @click="addNote('img')" title="Add Img"><i class="fa-solid fa-image"></i></span>
+            <span @click="addNote('todo')" title="Add Todos"><i class="fa-sharp fa-solid fa-book-open"></i></span>
+            <span @click="addNote('video')" title="Add Video"><i class="fa-solid fa-video"></i></span>
+            <span @click="save" title="Save note"><i class="fa-solid fa-floppy-disk"></i></span>
         </div>
-
-
-
-
-
-        <!-- <note-detalis v-if="isAdd" class="note-details" :note="newNote" @save="save(note)"/> -->
-        <!-- <note-add-form v-if="isAdd" :newNote="newNote" @save="save"/> -->
-        
-
-        <!-- <p>{{ newNote }}</p> -->
     </section>
     `,
     data() {
@@ -65,11 +56,16 @@ export default {
                         todos: [{ txt: "", doneAt: null }]
                     })
                     break
+                case 'video':
+                    this.isTodo = false
+                    this.placeholder = 'Enter Video Url'
+                    this.newNote = noteService.getEmptyNote('note-video', false, { url: '', title: '' }, null)
+                    break
             }
         },
         save() {
-            if (this.newNote.type === 'note-img') this.newNote.info.url = this.txt
-            else if(this.newNote.type === 'note-txt' && this.newNote.info.todos?.label) {
+            if (this.newNote.type === 'note-img' || this.newNote.type ==='note-video') this.newNote.info.url = this.txt
+            else if (this.newNote.type === 'note-txt' && this.newNote.info.todos?.label) {
                 this.newNote.info.todos = this.todos
                 console.log(this.newNote.info.todos);
             }
@@ -81,7 +77,7 @@ export default {
                 this.$emit('add', note)
             })
         },
-        addTodo(){
+        addTodo() {
             this.newNote.info.todos.push({ txt: "", doneAt: null })
         }
     },

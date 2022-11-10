@@ -6,7 +6,7 @@ import emailList from './apps/mail/cmps/email-list.cmp.js'
 import emailDetails from './apps/mail/cmps/email-details.cmp.js'
 
 import keepApp from './apps/keep/cmps/keep-app.cmp.js'
-import noteEdit from './apps/keep/cmps/note-edit.cmp.js'
+import noteAdd from './apps/keep/cmps/note-add.cmp.js'
 
 
 const { createRouter, createWebHashHistory } = VueRouter
@@ -36,7 +36,7 @@ const routerOptions = {
 			children: [
 				{
 					path: '/keep/:id?',
-					component: noteEdit
+					component: noteAdd
 				},
 			]
 		},

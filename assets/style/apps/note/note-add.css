@@ -5,6 +5,8 @@
     margin-bottom: 20px;
     box-shadow: -1px 1px 6px 0px;
     padding: 10px;
+    max-width: 500px;
+    border-radius: 25px;
 }
 .add-actions >* {
     margin-inline-end: 10px;
@@ -12,6 +14,14 @@
 
 .add-note span {
     font-size: 1.5rem;
+    opacity: .7;
+    transition: .4s;
+}
+
+.add-note span:hover {
+    cursor: pointer;
+    opacity: 1;
+    /* scale: 1.1; */
 }
 
 .add-note input{

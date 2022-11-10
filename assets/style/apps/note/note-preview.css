@@ -55,6 +55,10 @@
     visibility: visible;
 }
 
+.mark {
+    text-decoration: line-through;
+}
+
 
 .note-preview h1,
 .note-preview h2,

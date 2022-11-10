@@ -7,14 +7,14 @@ export default {
     template: `
     <section class="note-list-container">
         <ul class="clean-list note-list">
-                <li v-for="note in notes" :key="note.id">
-                        <note-preview v-if="note.isPinned" :note="note" @click="pickNote(note)" @togglePin="togglePin" @remove="remove"/>
+                <li v-for="note in pinnedNotes" :key="note.id">
+                        <note-preview :note="note" @click="pickNote(note)" @remove="remove"/>
                         <note-detalis v-if="note.isPicked" class="note-details" :note="note" @save="save(note)"/>
                 </li>
         </ul>
             <ul class="clean-list note-list">
                 <li v-for="note in notes" :key="note.id">
-                        <note-preview v-if="!note.isPinned" :note="note" @click="pickNote(note)" @togglePin="togglePin" @remove="remove"/>
+                        <note-preview :note="note" @click="pickNote(note)" @remove="remove" @pin="pin"/>
                         <note-detalis v-if="note.isPicked" class="note-details" :note="note" @save="save(note)"/>
                 </li>
             </ul>
@@ -22,11 +22,16 @@ export default {
     `,
     data() {
         return {
+            pinnedNotes: []
         }
     },
     created() {
-        this.notes.forEach(note => {
+        this.notes.forEach((note, idx) => {
             note.isPicked = false
+            if (note.isPinned) {
+                const pinnedNote = this.notes.splice(idx, 1)
+                this.pinnedNotes.push(pinnedNote)
+            }
         })
     },
     methods: {
@@ -38,14 +43,14 @@ export default {
         save(note) {
             this.$emit('save', note)
         },
-        togglePin(noteId) {
-            // const idx = this.notes.findIndex(note => note.id === noteId)
-            // const note = this.notes.splice(idx, 1)[0]
-            // note.isPinned ? this.notes.unshift(note) : this.notes.push(note)
-        },
         remove(id) {
             const idx = this.notes.findIndex(note => note.id === id)
             this.notes.splice(idx, 1)
+        },
+        pin(pinnedNote) {
+            const idx = this.notes.findIndex(note => note.id === pinnedNote.id)
+            this.notes.splice(idx, 1)
+            this.pinnedNotes.push(pinnedNote)
         }
     },
     components: {

@@ -1,16 +1,15 @@
 import noteTxtDetails from "./note-txt-details.cmp.js"
 import noteImgDetails from "./note-img-details.cmp.js"
+import noteTodoDetails from "./note-todo-details.cmp.js"
 import noteEditToolbar from "./note-edit-toolbar.cmp.js"
 
 export default {
     props: ['note'],
     template: `
     <section class="note-details" :class="setColor">
-        <button @click="close">X</button>
-        <button @click="save">Save</button>
         <component :is="note.type + '-details'" :note="note">
         </component>
-        <note-edit-toolbar :note="note" @changeColor="changeColor" @togglePin="togglePin" @remove="remove" class="details-toolbar"/>
+        <note-edit-toolbar :note="note" :isDetails="true" @changeColor="changeColor" @remove="remove" @close="close" @save="save" class="details-toolbar"/>
     </section>
     `,
     data() {
@@ -29,7 +28,8 @@ export default {
     components: {
         noteTxtDetails,
         noteImgDetails,
-        noteEditToolbar
+        noteEditToolbar,
+        noteTodoDetails
 
     },
     methods: {

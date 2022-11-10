@@ -2,6 +2,7 @@ import noteTxt from "./note-txt.cmp.js"
 import noteImg from "./note-img.cmp.js"
 import noteVideo from "./note-video.cmp.js"
 import noteEditToolbar from "./note-edit-toolbar.cmp.js"
+import noteTodo from "./note-todo.cmp.js"
 
 import { noteService } from '../services/note.service.js'
 import { showErrorMsg, showSuccessMsg } from '../../../services/event-bus.service.js'
@@ -11,9 +12,9 @@ export default {
     props: ['note'],
     template: `
         <article class="note-preview" :class="setColor" @mouseleave="isMouseOver(false)" @mouseover="isMouseOver(true)">
-            <component :is="note.type" :note="note" @todoDone="updateTodo(note)">
+            <component :is="note.type" :note="note">
             </component>
-            <note-edit-toolbar :note="note" @changeColor="changeColor" @togglePin="togglePin" @remove="remove"/>
+            <note-edit-toolbar :note="note" @changeColor="changeColor" @remove="remove" @pin="pin"/>
         </article>
     `,
     data() {
@@ -30,9 +31,6 @@ export default {
             this.note.color = color
             noteService.save(this.note).then(() => console.log('saved color'))
         },
-        togglePin(note) {
-            // this.$emit('togglePin', note.id)
-        },
         remove(id) {
             noteService.remove(id).then(() => {
                 showSuccessMsg(`Note ${id} Deleted...`)
@@ -40,11 +38,14 @@ export default {
             })
         },
         isMouseOver(isOver) {
-            console.log(isOver);
+            // console.log(isOver);
             this.note.isMouseOver = isOver
-            if(!isOver) this.note.ispalateClicked = false
+            if (!isOver) this.note.ispalateClicked = false
+        },
+        pin(note) {
+            this.$emit('pin', note)
         }
-        
+
     },
     computed: {
         setColor() {
@@ -55,6 +56,7 @@ export default {
         noteTxt,
         noteImg,
         noteEditToolbar,
-        noteVideo
+        noteVideo,
+        noteTodo
     }
 }

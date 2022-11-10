@@ -18,8 +18,25 @@
     align-self: center;
 }
 
-.note-details img{
+.note-details img {
     border-radius: inherit;
     object-fit: contain;
     /* height: 100%; */
+}
+
+.note-details cite {
+    background-color: rgb(223, 215, 215);
+    border: none;
+}
+
+.todos-details li {
+    border-bottom: 1px solid black;
+}
+
+.note-details h3 {
+    border-block-end: 3px solid black;
+}
+
+.todos-details input {
+    padding: 3px;
 }

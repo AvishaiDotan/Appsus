@@ -124,6 +124,7 @@ function getTemplateEmail() {
     for (let i = 0; i < 10; i++) {
         templateData.push({
             id: _makeId(),
+            senderIconImgUrl: `./assets/style/apps/mail/icons/user-icon-${getRandomIntInclusive(1, 4)}.png`,
             subject: subjects[getRandomIntInclusive(0, subjects.length - 1)],
             body: bodys[getRandomIntInclusive(0, bodys.length - 1)],
             headline: headlines[getRandomIntInclusive(0, headlines.length - 1)],

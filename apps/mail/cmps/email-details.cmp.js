@@ -34,6 +34,7 @@ export default {
             </header>
             <section class="email-content" >
                 <p class="email-headline">{{ email.headline }}</p>
+                <img class="sender-img" :src="email.senderIconImgUrl" alt="sender-img" />
                 <p class="email-subject"><span>{{ email.subject }}</span> <span class="email-from"><{{ email.from }}></span> <span class="email-sent-time"> {{sentDate}} </span> </p>
                 <p>{{ email.body }}</p>
             </section>

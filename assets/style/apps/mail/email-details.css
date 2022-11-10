@@ -46,3 +46,9 @@
       text-overflow: ellipsis;
       display: inline-block;
 }
+
+.email-details .sender-img {
+  width: 31px;
+  position: absolute;
+  transform: translateX(-200%);
+}

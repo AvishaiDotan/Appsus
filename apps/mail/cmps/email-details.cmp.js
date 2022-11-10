@@ -13,7 +13,7 @@ export default {
                 </div>
                 <div class="flex justify-even">
                     <span @click.stop="deleteEmail" title="Delete">
-                        <img src="./assets/style/apps/mail/icons/trash-icon.png" alt="Delete Icon" />
+                        <img class="delete-email-icon" src="./assets/style/apps/mail/icons/trash-icon.png" alt="Delete Icon" />
                     </span>
                     <span :title="bookMarkTitle" @click.stop="toggleProperty('isBookmarked')">
                         <img class="email-bookmark-icon" 

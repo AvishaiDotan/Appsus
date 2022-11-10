@@ -8,6 +8,7 @@
 .toolbar span {
     transition: .3s;
     opacity: .7;
+    min-width: 10px;
 }
 
 .toolbar span:hover {
@@ -31,6 +32,24 @@
     padding: 5px;
     border-radius: 15px;
 }
+
+.options-btn {
+    position: relative;
+}
+
+.options-btn .options-bar {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    z-index: 10;
+}
+
+.details-toolbar {
+    background-color: rgb(204, 201, 201);
+    position: relative;
+    z-index: 10;
+}
+
 
 .color-palate .color {
     width: 20px;

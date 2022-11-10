@@ -1,15 +1,15 @@
 export default {
     props: ['note'],
     template: `
-        <article class="note-txt-preview">
-            <h3>{{note.info.txt || note.info.label}}</h3>
+        <section class="note-txt-preview">
+            <h2>{{note.info.txt || note.info.label}}</h2>
             <ul class="todos-preview">
                 <li v-for="todo in note.info.todos">
                     <h4>{{todo.txt}}</h4>
-                    <input @click.stop="todoDone(todo)" type="checkbox" v-model="todo.isDone">
+                    <input @click.stop="todoDone(todo)" type="checkbox" v-model="todo.isDone" title="Mark done!">
                 </li>
             </ul>
-        </article>
+        </section>
     `,
     methods: {
         todoDone(todo) {

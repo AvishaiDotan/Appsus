@@ -1,9 +1,7 @@
 .note-list {
-    /* column-width: 200px;
-    gap: 10px; */
+    gap: 10px;
     column-count: auto;
     column-width: 250px;
-    /* background-color: green */
 }
 
 .note-list >* {

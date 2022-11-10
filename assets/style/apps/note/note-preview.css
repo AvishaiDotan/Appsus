@@ -7,6 +7,11 @@
     /* display: inline; */
 }
 
+.note-video-preview iframe{
+    width: 100%;
+    border-radius: 8px;
+}
+
 .note-img-preview {
     padding: 5px;
 }
@@ -16,17 +21,34 @@
     width: 100%;
 }
 
+.note-video-preview {
+    padding: 5px;
+}
+
 .note-preview {
     break-inside: avoid;
     border: 1px solid rgb(162, 161, 161);
     margin: 5px 0;
     transition: .4s;
+    border-radius: 10px;
+    /* padding-top: 5px; */
 }
 
 .note-preview:hover {
     box-shadow: 0px 1px 2px 0px;
     /* scale: 1.05; */
     cursor: pointer;
+}
+
+.note-preview .toolbar {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .3s;
+}
+
+.note-preview:hover .toolbar{
+    opacity: 1;
+    visibility: visible;
 }
 
 .note-preview h1,

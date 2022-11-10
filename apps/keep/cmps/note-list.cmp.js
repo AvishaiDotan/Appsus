@@ -8,14 +8,14 @@ export default {
     <section class="note-list-container">
         <ul class="clean-list note-list">
                 <li v-for="note in notes" :key="note.id">
-                        <note-preview v-if="note.isPinned" :note="note" @click="pickNote(note)" @togglePin="togglePin"/>
+                        <note-preview v-if="note.isPinned" :note="note" @click="pickNote(note)" @togglePin="togglePin" @remove="remove"/>
                         <note-detalis v-if="note.isPicked" class="note-details" :note="note" @save="save(note)"/>
                         <!-- <router-view></router-view> -->
                 </li>
         </ul>
             <ul class="clean-list note-list">
                 <li v-for="note in notes" :key="note.id">
-                        <note-preview v-if="!note.isPinned" :note="note" @click="pickNote(note)" @togglePin="togglePin"/>
+                        <note-preview v-if="!note.isPinned" :note="note" @click="pickNote(note)" @togglePin="togglePin" @remove="remove"/>
                         <note-detalis v-if="note.isPicked" class="note-details" :note="note" @save="save(note)"/>
                         <!-- <router-view></router-view> -->
                 </li>
@@ -44,6 +44,10 @@ export default {
             // const idx = this.notes.findIndex(note => note.id === noteId)
             // const note = this.notes.splice(idx, 1)[0]
             // note.isPinned ? this.notes.unshift(note) : this.notes.push(note)
+        },
+        remove(id) {
+            const idx = this.notes.findIndex(note => note.id === id)
+            this.notes.splice(idx, 1)
         }
     },
     components: {

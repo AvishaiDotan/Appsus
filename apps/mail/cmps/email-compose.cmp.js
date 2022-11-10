@@ -20,7 +20,7 @@ export default {
                         <input 
                         v-model="emailToEdit.subject" 
                         type="text" 
-                        title="Send To" 
+                        title="Subject" 
                         placeholder="Subject:"/>
                     </label>
                     <div>
@@ -30,7 +30,7 @@ export default {
                         placeholder="Mail Body:"></textarea>
                     </div>
                     <div class="send-delete-actions">
-                        <button @click.stop="sendMail" class="send-btn" title="send">Send</button>
+                        <button  class="send-btn" title="send">Send</button>
                         <img @click.stop="$emit('compose-mail')"
                         class="trash-icon" 
                         src="./assets/style/apps/mail/icons/trash-icon.png" 
@@ -48,11 +48,19 @@ export default {
 
     methods: {
         sendMail() {
-            if (!this.emailToEdit.to || !this.emailToEdit.subject || !this.emailToEdit.body) return// USER-MSG
+
+            
+            const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g
+            if (!regex.test(this.emailToEdit.to) || !this.emailToEdit.subject || !this.emailToEdit.body) return// USER-MSG
+            
+            this.emailToEdit.headline = this.emailToEdit.subject
+            this.emailToEdit.sentAt = Date.now()
+            this.emailToEdit.isRead = true
+            
             emailService.save(this.emailToEdit)
                 .then(email => {
-                    showSuccessMsg(`email saved (email id: ${email.id})`)
-                    
+                    showSuccessMsg(`Email Successfully Sended to ${email.to}`)
+                    this.$emit('compose-mail')   
                 })
                 .catch(err => {
                     showErrorMsg(`Cannot save email`)

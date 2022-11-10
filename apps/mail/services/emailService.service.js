@@ -54,11 +54,15 @@ function save(email) {
 function getEmptyEmail(subject, body, to) {
     return {
         id: '',
-        subject,
+        senderIconImgUrl: `./assets/style/apps/mail/icons/user-icon-${utilService.getRandomIntInclusive(1, 4)}.png`,
+        subject: '',
         body: '',
+        headline: '',
         isRead: false,
-        sentAt : Date.now(),
-        from: 'momo@momo.com',
+        isStarred: false,
+        isBookmarked: false,
+        sentAt : '',
+        from: 'Avishai@momo.com',
         to: ''
     }
 }
@@ -71,6 +75,7 @@ function getNextEmailId(emailId) {
             return emails[idx+1].id
         })
 }
+
 
 function _createEmails() {
     let emails = utilService.loadFromStorage(EMAIL_KEY)
@@ -87,6 +92,8 @@ function _createEmail(vendor, maxSpeed = 250) {
     email.id = utilService.makeId() 
     return email
 }
+
+
 
 
 

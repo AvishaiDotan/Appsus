@@ -1,5 +1,5 @@
 .email-container {
-    font-weight: 1000;
+
     position: relative;
     padding: 10px;
 }
@@ -15,6 +15,7 @@ table .email-container td {
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 90%;
+    height: 20px;
 }
 
 .email-container:hover {
@@ -34,7 +35,7 @@ table .email-container td {
 }
 
 .read {
-    font-weight: 400;
+    font-family: ProductSans-Bold;
     background-color: var(--clr-mail-light-secondary);
 }
 

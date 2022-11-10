@@ -1,8 +1,11 @@
 @import './email-header.css';
 @import './compose-mail.css';
 
+
+
 .email-app-container {
     background-color: var(--clr-mail-background);
+    font-family: ProductSans-Medium;
 }
 
 .email-app-container {  
@@ -28,4 +31,8 @@
 .main-header-features { grid-area: main-header-features; }
   
 .email-folder-list { grid-area: email-folder-list; }
+
+.email-font-bold {
+    font-family: ProductSans-Bold;
+}
   

@@ -1,0 +1,6 @@
+.main-keep-layout {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    max-width: 80vw;
+}

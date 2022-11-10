@@ -5,21 +5,23 @@ import noteDetails from "./note-detalis.cmp.js"
 
 export default {
     template: `
-    <section class="add-note">
-        <div class="add-input-container">
-            <input v-if="!isTodo" type="text" :placeholder="placeholder" v-model="txt"/>
-            <div v-else class="todo-input-container">
-                <input v-for="todo in newNote.info.todos" type="text" :placeholder="placeholder" v-model="todo.txt"/>
-                <span @click="addTodo">+</span>
+    <section class="add-note-container">
+        <section class="add-note">
+            <div class="add-input-container">
+                <input v-if="!isTodo" type="text" :placeholder="placeholder" v-model="txt"/>
+                <div v-else class="todo-input-container">
+                    <input v-for="todo in newNote.info.todos" type="text" :placeholder="placeholder" v-model="todo.txt"/>
+                    <span @click="addTodo">+</span>
+                </div>
             </div>
-        </div>
-        <div class="add-actions">
-            <span @click="addNote('txt')" title="Add Text"><i class="fa-solid fa-font"></i></span>
-            <span @click="addNote('img')" title="Add Img"><i class="fa-solid fa-image"></i></span>
-            <span @click="addNote('todo')" title="Add Todos"><i class="fa-sharp fa-solid fa-book-open"></i></span>
-            <span @click="addNote('video')" title="Add Video"><i class="fa-solid fa-video"></i></span>
-            <span @click="save" title="Save note"><i class="fa-solid fa-floppy-disk"></i></span>
-        </div>
+            <div class="add-actions">
+                <span @click="addNote('txt')" title="Add Text"><i class="fa-solid fa-font"></i></span>
+                <span @click="addNote('img')" title="Add Img"><i class="fa-solid fa-image"></i></span>
+                <span @click="addNote('todo')" title="Add Todos"><i class="fa-sharp fa-solid fa-book-open"></i></span>
+                <span @click="addNote('video')" title="Add Video"><i class="fa-solid fa-video"></i></span>
+                <span @click="save" title="Save note"><i class="fa-solid fa-floppy-disk"></i></span>
+            </div>
+        </section>
     </section>
     `,
     data() {

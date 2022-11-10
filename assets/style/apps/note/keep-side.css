@@ -1,0 +1,41 @@
+.keep-side {
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    position: fixed;
+    z-index: 10;
+    width: 250px;
+}
+
+.keep-side span {
+    transition: .6s;
+    border-radius: 50%;
+    padding: 5px;
+}
+.keep-side h3 {
+    display: none;
+}
+
+.keep-side span:hover {
+    background-color: rgb(233, 228, 228);
+}
+
+.keep-side div:hover {
+    width: 100%;
+    background-color: rgb(248, 239, 227);
+    border-bottom: 2px solid black;
+    transition: .5s;
+    opacity: .8;
+}
+
+.keep-side div:hover +h3{
+    display: block;
+}
+
+.keep-side div {
+    padding-top: 3px;
+    height: 30px;
+    border: none;
+    width: 0%;
+}

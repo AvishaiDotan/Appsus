@@ -4,14 +4,18 @@ import { showErrorMsg, showSuccessMsg } from '../../../services/event-bus.servic
 import noteList from './note-list.cmp.js'
 import noteAdd from './note-add.cmp.js'
 import keepHeader from './keep-header.cmp.js'
+import keepSide from './keep-side.cmp.js'
 
 export default {
     template: `
         <section class="note-app">
         <keep-header @filter="setFilter"/>
-        <note-add @add="addNew"/>
-        <note-list v-if="notes.length" 
-            :notes="notesToShow" @save="save"/>
+        <keep-side/>
+        <section class="main-keep-layout">
+            <note-add @add="addNew"/>
+            <note-list v-if="notes.length"
+                :notes="notesToShow" @save="save"/>
+        </section>
         </section>
     `,
     data() {
@@ -53,7 +57,7 @@ export default {
                     const txt = note.info?.txt
                     if (txt) return regex.test(txt)
                     else if (regex.test(label)) return true
-                    else {
+                    else if(todos) {
                         for (var i = 0; i < todos.length; i++)
                             if (regex.test(todos[i].txt)) return true
                     }
@@ -66,6 +70,7 @@ export default {
     components: {
         noteList,
         noteAdd,
-        keepHeader
+        keepHeader,
+        keepSide
     }
 }

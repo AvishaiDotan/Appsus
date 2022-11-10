@@ -5,10 +5,18 @@
     margin-bottom: 20px;
     box-shadow: -1px 1px 6px 0px;
     padding: 10px;
-    /* max-width: 500px; */
+    max-width: 700px;
+    min-width: 500px;
     border-radius: 25px;
 }
-.add-actions >* {
+
+.add-note-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+.add-actions>* {
     margin-inline-end: 10px;
 }
 
@@ -24,12 +32,12 @@
     /* scale: 1.1; */
 }
 
-.add-note input{
+.add-note input {
     border: none;
     padding: 5px;
 }
 
-.todo-input-container{
+.todo-input-container {
     display: flex;
     flex-direction: column;
 }

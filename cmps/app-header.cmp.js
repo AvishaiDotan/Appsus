@@ -7,6 +7,7 @@ export default {
                 <router-link to="/about">About</router-link> |
                 <router-link to="/mail">Mail</router-link> |
                 <router-link to="/Keep">Keep</router-link> |
+               <button><a href="./miss-books/index.html">asdasdas</a></button>
             </nav>
         </header>
     `,

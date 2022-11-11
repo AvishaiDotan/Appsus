@@ -15,7 +15,7 @@ export default {
     },
     computed: {
         getImg() {
-            return `../img/background/about-page/${this.imgIdx}.jpg`
+            return `./img/background/about-page/${this.imgIdx}.jpg`
         },
     },
     created() {

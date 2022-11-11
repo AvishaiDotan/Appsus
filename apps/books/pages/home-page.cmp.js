@@ -13,7 +13,7 @@ export default {
     },
     computed: {
         getImg() {
-            return `../img/background/home-page/${this.imgIdx}.jpg`
+            return `./img/background/home-page/${this.imgIdx}.jpg`
         },
     },
     methods: {

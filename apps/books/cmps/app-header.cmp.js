@@ -19,7 +19,7 @@ export default {
     `,
     computed: {
         getIcon() {
-            return `../img/icons/open-book.png`
+            return `./img/icons/open-book.png`
         }
     },
 }

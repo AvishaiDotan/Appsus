@@ -86,7 +86,7 @@ export default {
         },
 
         getDiscountIcon() {
-            return `../img/icons/discount.png`
+            return `./img/icons/discount.png`
         },
 
         getStyleByPrice() {

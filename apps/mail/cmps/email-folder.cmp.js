@@ -9,7 +9,7 @@ export default {
                      :class="folderClass"> 
                     <div @click.stop="setFilter" class="email-folder" >
                         <img :src="imgUrl" :alt="folder.folderName" :title="folder.folderName" />
-                        <span>{{ folder.folderName }}</span>
+                        <span :style="fontFamily">{{ folder.folderName }}</span>
                     </div>
                 </div>
     `,
@@ -25,6 +25,10 @@ export default {
         folderClass() {
             return {'folder-hover': this.isHover, 'folder-selected': this.folder.isSelected} 
         },
+        fontFamily() {
+             return (this.folder.isSelected) ? {fontFamily: 'ProductSans-Bold'} :
+                {fontFamily: 'ProductSans-medium'}
+        }
     },
     methods: {
         setFilter() {

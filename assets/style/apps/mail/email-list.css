@@ -65,6 +65,7 @@
     width: 200px;
     display: flex;
     align-items: center;
+    margin-block: 10px;
 }
 
 .unread-counter-container .filler {
@@ -83,4 +84,5 @@
 .unread-counter-container p {
     margin: 0;
     margin-inline-end: 10px;
+    padding: 15px;
 }

@@ -16,12 +16,12 @@ export default {
                 <div class="about-working-img-container">
                 <div class="names-container">
                     <div>
-                            <p>Avishai Dotan</p> 
+                            <p class="yellow">Avishai Dotan</p> 
                             <img src="./miss-books/img/personal-photo.jpg" alt="Avishai Dotan" />
                     </div>
                     <div>
                         <img src="./miss-books/img/T03PU4YR4NS-U03QV7BN4U9-f34a1c6f3407-512.jpg" alt="Amir Gombo" />
-                        <p>Amir Gombo</p> 
+                        <p class="blue">Amir Gombo</p> 
                     </div>
                 </div>
                 

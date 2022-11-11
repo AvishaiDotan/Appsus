@@ -48,19 +48,15 @@ export default {
     },
     computed: {
         notesToShow() {
-            if(!this.filterBy.txt.trim()) return this.notes
+            if (!this.filterBy.txt.trim()) return this.notes
             const regex = new RegExp(this.filterBy.txt, 'i')
             let notes = this.notes.filter(note => {
-                if (note.type === 'note-txt') {
-                    const todos = note.info.todos?.length
-                    const label = note.info?.labal
-                    const txt = note.info?.txt
-                    if (txt) return regex.test(txt)
-                    else if (regex.test(label)) return true
-                    else if(todos) {
-                        for (var i = 0; i < todos.length; i++)
-                            if (regex.test(todos[i].txt)) return true
-                    }
+                if (note.type === 'note-txt') return regex.test(note.info.txt)
+                else if (note.type === 'note-todo') {
+                    if (regex.test(note.info.label))
+                        return true
+                    for (var i = 0; i < note.info.todos.length; i++)
+                        if (regex.test(note.info.todos[i].txt)) return true
                 }
                 return false
             })

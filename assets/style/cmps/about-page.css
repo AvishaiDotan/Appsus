@@ -1,6 +1,7 @@
 .about-page {
     display: flex;
     flex-wrap: wrap;
+    background-color: var(--clr-mail-light-secondary);
 }
 
 .about-page .about {
@@ -70,7 +71,7 @@
 .about .icons-container {
     padding: 50px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-self: center;
     gap: 50px;
 }
@@ -115,3 +116,4 @@
 .names-container p {
     font-family: ProductSans-light;
 }
+

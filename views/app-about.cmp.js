@@ -14,7 +14,6 @@ export default {
                     <img src="./miss-books/img/png-clipart-computer-icons-google-books-book-blue-angle-thumbnail-removebg-preview.png" alt="Gmail logo" />
                 </div>
                 <div class="about-working-img-container">
-                <img class="about-working-img" src="./miss-books/img/illustration-support.e7d982be5cc5.svg" alt="Software Engineer Create Apps" />
                 <div class="names-container">
                     <div>
                             <p>Avishai Dotan</p> 
@@ -38,12 +37,12 @@ export default {
     },
     computed: {
         backgroundImg() {
-            return `./assets/img/header-background/${this.imgIdx}.jpg`
+            return `./assets/img/header-background/team${this.imgIdx}.jpg`
         }
     },
     created() {
         setInterval(() => {
-            if (this.imgIdx === 5) this.imgIdx = 0
+            if (this.imgIdx === 4) this.imgIdx = 0
             this.imgIdx++
         }, 9000)
     },

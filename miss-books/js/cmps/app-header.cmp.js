@@ -11,6 +11,7 @@ export default {
                 <div class="nav-links">
                     <router-link to="/bookApp">Book Gallery</router-link>
                     <router-link to="/about">About</router-link>
+                    <a href="../index.html">AppSus</a>
                 </div>
 
                 

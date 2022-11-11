@@ -33,23 +33,28 @@ export default {
     data() {
         return {
             filterBy: {},
-            sortBy: {type: '', descending: true},
+            sortBy: { type: '', descending: true },
             tableHeadlines: ['', '', 'a-z', '', 'time'],
             emails: [],
         }
     },
     methods: {
         handleOpeningEmail(email) {
+            console.log(email);
+            email.isRead = true
             this.$emit('set-open-email', email)
-            this.setAsRead(email)
+            emailService.save(email)
         },
         setAsRead(email) {
+            
             email.isRead = true;
             emailService.save(email)
                 .then(() => {
                     emailService.query()
-                        .then(emails => this.emailList = emails)
+                        .then(emails => this.emails = emails)
                 })
+
+
         },
         setFilter(filterBy) {
             if (filterBy.txt !== undefined) this.filterBy.txt = filterBy.txt
@@ -57,11 +62,11 @@ export default {
         },
         setEmails() {
             emailService.query()
-            .then(emails => {
-                this.emails = emails
-                this.$emit('set-emails', emails)
-            })
-            
+                .then(emails => {
+                    this.emails = emails
+                    this.$emit('set-emails', emails)
+                })
+
         },
         setSort(sortBy) {
             if (this.sortBy.type === sortBy) this.sortBy.descending = !this.sortBy.descending
@@ -74,7 +79,7 @@ export default {
         emailsToShow() {
             const regex = new RegExp(this.filterBy.txt, 'i')
 
-            
+
             let emails = this.emails.filter(email => {
 
                 const byName = (regex.test(email.subject) || regex.test(email.to) || regex.test(email.body))
@@ -103,12 +108,12 @@ export default {
                     else if (this.sortBy.type === 'subject') return order[0].subject.localeCompare(order[1].subject)
                 })
             }
-            
+
 
             return emails
         },
         sortImg() {
-            return  (this.sortBy.descending) ? `./assets/style/apps/mail/icons/arrow-down-a-z-solid.svg` :
+            return (this.sortBy.descending) ? `./assets/style/apps/mail/icons/arrow-down-a-z-solid.svg` :
                 `./assets/style/apps/mail/icons/arrow-up-a-z-solid.svg`
         }
     },
@@ -118,7 +123,8 @@ export default {
     created() {
         this.setEmails()
         eventBus.on('set-filter', (filterBy) => { this.setFilter(filterBy) })
-        eventBus.on('save-error', () => {this.setEmails()})
+        // eventBus.on('save-error', () => {this.setEmails()})
+        eventBus.on('reload-list', () => { this.setEmails() })
     },
 
 }

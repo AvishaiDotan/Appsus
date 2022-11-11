@@ -19,7 +19,7 @@ function get(entityType, entityId) {
     })
 }
 
-function post(entityType, newEntity, append = true) {
+function post(entityType, newEntity, append = false) {
     newEntity.id = _makeId()
     return query(entityType).then(entities => {
         append ? entities.push(newEntity) : entities.unshift(newEntity)

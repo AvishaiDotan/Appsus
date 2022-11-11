@@ -27,6 +27,8 @@
 @import './apps/mail/email-list.css';
 @import './apps/mail/email-preview.css';
 @import './apps/mail/email-details.css';
+@import './apps/mail/folder-list.css';
+
 
 @import './apps/note/note-app.css';
 @import './apps//note/note-list.css';

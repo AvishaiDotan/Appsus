@@ -70,7 +70,7 @@
     border: none;
     cursor: pointer;
     width: 300px;
-    transition: 0.6s;
+    transition: 0.4s;
 }
 
 .compose-mail-modal .send-btn:hover {
@@ -91,7 +91,7 @@
 .compose-mail-modal .x-icon {
     height: 10px;
     filter: invert(38%) sepia(3%) saturate(235%) hue-rotate(155deg) brightness(99%) contrast(97%);
-    transition: 0.6s;
+    transition: 0.4s;
 }
 
 .compose-mail-modal .x-icon:hover {
@@ -101,7 +101,7 @@
 
 .compose-mail-modal .trash-icon {
     filter: invert(38%) sepia(3%) saturate(235%) hue-rotate(155deg) brightness(99%) contrast(97%);
-    transition: 0.6s;
+    transition: 0.4s;
 }
 
 .compose-mail-modal .trash-icon:hover {

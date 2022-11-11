@@ -3,8 +3,14 @@
 
 @font-face {
     font-family: ProductSans-Medium;
-    src: url(../../fonts/Google-sans-Font-Family/ProductSans-Medium.ttf);
+    src: url(../../fonts/Google-sans-Font-Family/ProductSans-Light.ttf);
 }
+
+@font-face {
+    font-family: ProductSans-light;
+    src: url(../../fonts/Google-sans-Font-Family/ProductSans-Light.ttf);
+}
+
 @font-face {
     font-family: ProductSans-Bold;
     src: url(../../fonts/Google-sans-Font-Family/ProductSans-Bold.ttf);

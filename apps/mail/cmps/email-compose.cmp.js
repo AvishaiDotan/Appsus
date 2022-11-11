@@ -62,7 +62,8 @@ export default {
             emailService.save(this.emailToEdit)
                 .then(email => {
                     showSuccessMsg(`Email Successfully Sended to ${email.to}`)
-                    this.$emit('compose-mail')   
+                    this.$emit('compose-mail')
+                    eventBus.emit('reload-list')   
                 })
                 .catch(err => {
                     showErrorMsg(`Cannot save email`)

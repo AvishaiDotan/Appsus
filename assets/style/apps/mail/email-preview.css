@@ -1,7 +1,7 @@
 .email-container {
-
     position: relative;
     padding: 10px;
+    font-family: ProductSans-Bold;
 }
 
 tr:first-of-type .email-container:first-of-type {
@@ -31,11 +31,11 @@ table .email-container td {
 
 .email-star-icon.unselected, .email-bookmark-icon.unselected {
     filter: invert(81%) sepia(4%) saturate(215%) hue-rotate(175deg) brightness(94%) contrast(92%);
-    transition: 0.6s;
+    transition: 0.4s;
 }
 
 .read {
-    font-family: ProductSans-Bold;
+    font-family: ProductSans-light;
     background-color: var(--clr-mail-light-secondary);
 }
 
@@ -59,7 +59,7 @@ table .email-container td {
 .email-preview-actions img {
     height: 50%;
     filter: invert(81%) sepia(4%) saturate(215%) hue-rotate(175deg) brightness(94%) contrast(92%);
-    transition: 0.6s;
+    transition: 0.4s;
 }
 
 .email-preview-actions img:hover {

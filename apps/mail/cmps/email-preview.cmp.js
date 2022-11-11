@@ -51,8 +51,8 @@ export default {
             "./assets/style/apps/mail/icons/star-icon.png"
         },
         readStateIcon() {
-            return (this.email.isRead) ? './assets/style/apps/mail/icons/envelope-solid.svg' :
-                './assets/style/apps/mail/icons/envelope-open-solid.svg'
+            return (this.email.isRead) ? './assets/style/apps/mail/icons/envelope-open-solid.svg' : 
+                './assets/style/apps/mail/icons/envelope-solid.svg'
         },
         actionsBackgroundColor() {
             return { backgroundColor: (this.email.isRead) ? 'var(--clr-mail-light-secondary)' : 'var( --clr-mail-background)' }
@@ -82,12 +82,9 @@ export default {
             this.email.isStarred = !this.email.isStarred
             emailService.save(this.email)
         },
-
         toggleProperty(property) {
-            
             this.email[property] = !this.email[property]
             emailService.save(this.email)
-            
         },
         deleteEmail() {
             this.email.removedAt = Date.now()

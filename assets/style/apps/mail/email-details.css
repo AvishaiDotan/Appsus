@@ -72,5 +72,5 @@
 
 .email-details .delete-email-icon {
     filter: invert(81%) sepia(4%) saturate(215%) hue-rotate(175deg) brightness(94%) contrast(92%);
-    transition: 0.6s;
+    transition: 0.4s;
 }

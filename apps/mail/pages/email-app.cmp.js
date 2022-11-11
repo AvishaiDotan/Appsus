@@ -22,7 +22,7 @@ export default {
         <email-list 
             v-if="!openedEmail" 
             @set-open-email="setOpenEmail"
-            @setEmails="setEmails"
+            @set-emails="setEmails"
             :emails="emails" 
             class="email-list"/>
         <!-- <email-details v-else="!openedEmail" :email="openedEmail"/> -->

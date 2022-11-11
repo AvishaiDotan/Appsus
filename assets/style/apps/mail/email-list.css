@@ -13,7 +13,7 @@
     grid-template-areas:
       ". . . . .";
     align-items: center; 
-    transition: 0.6s;
+    transition: 0.4s;
     padding: 10px;
 }
 
@@ -31,7 +31,7 @@
       ". . . . .";
     align-items: center; 
     border-bottom: 0.1px var(--clr-mail1) solid;
-    transition: 0.6s;
+    transition: 0.4s;
     
 }
 
@@ -55,4 +55,32 @@
 
 .sort-icon {
     height: 20px;
+}
+
+.unread-counter-container {
+    background-color: #DADCE0;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    height: 32px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+}
+
+.unread-counter-container .filler {
+    /* width: 50px; */
+    background-color: #8198c7;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.unread-counter-container p {
+    margin: 0;
+    margin-inline-end: 10px;
 }

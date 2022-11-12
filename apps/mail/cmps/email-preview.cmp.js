@@ -1,4 +1,5 @@
 import { emailService } from '../services/emailService.service.js';
+import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
 
 export default {
     props: ['email'],
@@ -77,18 +78,33 @@ export default {
         }
     },
     methods: {
-        toggleStar() {
-
-            this.email.isStarred = !this.email.isStarred
-            emailService.save(this.email)
-        },
         toggleProperty(property) {
             this.email[property] = !this.email[property]
             emailService.save(this.email)
+            
+            let propTxt;
+            switch(property) {
+                case 'isStarred':
+                    propTxt = 'starred'
+                    break
+                case 'isBookmarked':
+                    propTxt = 'bookmarked'
+                    break
+                case 'isRead':
+                    propTxt = 'read'
+                    break
+            }
+
+            let propVal = (this.email[property]) ? ' ' : ' un'
+            let userMsg = `E Mail set as` + propVal + propTxt
+            showSuccessMsg(userMsg)
         },
         deleteEmail() {
             this.email.removedAt = Date.now()
             emailService.save(this.email)
+                .then(() => {
+                    showSuccessMsg('E-Mail Was Deleted')
+                })
         },
         isActionsDisplay() {
             return this.$refs.actionsContainer.style.display === 'flex'

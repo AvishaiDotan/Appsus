@@ -10,11 +10,11 @@ export default {
                 <tr class="headlines-container">
                     <td></td>
                     <td></td>
-                    <td class="headline" @click.stop="setSort('subject')" title="Sort">
+                    <td class="headline" @click.stop="setSort('subject')" title="Sort By Subject Name">
                         <img :src="sortImg" alt="sort-icon" class="sort-icon" />
                     </td>
                     <td></td>
-                    <td class="headline" @click.stop="setSort('time')" title="Sent Time" >Time</td>
+                    <td class="headline" @click.stop="setSort('time')" title="Sort By Sent Time" >Time</td>
                     <!-- <td class="headline" v-for="headlineTxt in tableHeadlines" @click.stop="setSort(headlineTxt)" :title="headline">{{headline}}</td> -->
                 </tr>
             </thead>

@@ -51,7 +51,10 @@ export default {
 
             
             const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g
-            if (!regex.test(this.emailToEdit.to) || !this.emailToEdit.subject || !this.emailToEdit.body) return// USER-MSG
+            if (!regex.test(this.emailToEdit.to)) {
+                showErrorMsg(`Invalid mail address`)
+                return
+            }
             
             this.emailToEdit.headline = this.emailToEdit.subject
             this.emailToEdit.sentAt = Date.now()

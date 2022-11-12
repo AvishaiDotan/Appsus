@@ -1,5 +1,5 @@
 import { emailService } from "../services/emailService.service.js"
-import { showErrorMsg, eventBus } from "../../../services/event-bus.service.js"
+import { showErrorMsg, eventBus, showSuccessMsg } from "../../../services/event-bus.service.js"
 
 export default {
     props: ['email'],
@@ -85,15 +85,22 @@ export default {
         },
 
         deleteEmail() {
+            
             this.email.removedAt = Date.now()
             emailService.save(this.email)
+                .then(() => {
+                    showSuccessMsg('E-Mail Was Deleted')
+                })
             this.unselectEmail()
         },
         toggleProperty(property) {
-
             this.email[property] = !this.email[property]
             emailService.save(this.email)
 
+            let propTxt = (property === 'isStarred') ? 'starred' : 'bookmarked'
+            let propVal = (this.email[property]) ? ' ' : ' un'
+            let userMsg = `E Mail set as` + propVal + propTxt
+            showSuccessMsg(userMsg)
         },
     },
 }

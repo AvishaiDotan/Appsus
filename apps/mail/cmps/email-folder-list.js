@@ -7,7 +7,7 @@ export default {
     template:`
         <section ref="emailSideMenu">
             
-            <button @click.stop="$emit('compose-mail')" class="compose-btn">Compose</button>
+            <button @click.stop="onComposeMail" class="compose-btn">Compose</button>
 
             <div class="email-folders-container">
                 <email-folder v-for="folder in folders" :folder="folder" @selectFolder="selectFolder"></email-folder>
@@ -60,6 +60,10 @@ export default {
             folder.isSelected = true
             this.folders = this.folders.slice()
         },
+        onComposeMail() {
+            this.$emit('compose-mail')
+            eventBus.emit('toggle-mail-side-menu')
+        }
 
 
     },

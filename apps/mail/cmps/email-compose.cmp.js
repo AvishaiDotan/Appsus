@@ -23,7 +23,7 @@ export default {
                         title="Subject" 
                         placeholder="Subject:"/>
                     </label>
-                    <div>
+                    <div class="textarea-container">
                         <textarea 
                         v-model="emailToEdit.body" 
                         cols="30" rows="10" 

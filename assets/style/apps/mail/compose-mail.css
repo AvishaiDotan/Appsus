@@ -55,7 +55,7 @@
     position: relative;
     z-index: 0;
     -webkit-font-smoothing: antialiased;
-    font-family: "Google Sans",Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+    font-family: ProductSans-Medium,
     font-size: .875rem;
     letter-spacing: normal;
     box-sizing: border-box;
@@ -111,4 +111,39 @@
 
 .compose-mail-header p {
     margin: 0;
+}
+
+.compose-btn {
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.302),0 1px 3px 1px rgba(60,64,67,0.149);
+    -webkit-font-smoothing: antialiased;
+    font-family: ProductSans-r-medium;
+    font-size: 1rem;
+    letter-spacing: normal;
+    -webkit-align-items: center;
+    align-items: center;
+    background-color: #c2e7ff;
+    background-image: none;
+    -webkit-border-radius: 16px;
+    border-radius: 16px;
+    color: #001d35;
+    display: -webkit-inline-box;
+    display: -webkit-inline-flex;
+    display: inline-flex;
+    font-weight: 500;
+    height: 56px;
+    min-width: 56px;
+    overflow: hidden;
+    padding: 0 24px 0 0;
+    text-transform: none;
+    border: none;
+    width: 150px;
+    margin-block-start: 10px;
+    margin-inline-start: 10px;
+    margin-block: 10px;
+    padding: 30px;
+}
+
+.compose-btn:hover {
+    box-shadow: 0 1px 3px 0 rgb(60 64 67 / 30%), 0 4px 8px 3px rgb(60 64 67 / 15%);
+    background-color: #c2e7ff;
 }

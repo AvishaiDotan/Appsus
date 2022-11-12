@@ -1,7 +1,8 @@
 .app-header {
-  background-color: var(--clr5);
-  color: var(--secondary-clr1);
-  padding: 1em;
+  background-color: var(--clr-mail-background);
+  color: #3a3a3a;
+  font-family: ProductSans-Bold;
+  padding-inline: 50px;
 }
 
 @media(max-width: 720px) {
@@ -10,3 +11,34 @@
     color: var(--secondary-clr2);
   }
 }
+
+.app-header img {
+  cursor: pointer;
+}
+
+.app-header img, .app-header nav {
+    height: 80px;
+}
+
+.app-header nav a {
+    padding: 5px;
+    min-height: 0;
+    min-width: 0;
+}
+
+.app-header div {
+    height: 100%;
+    transition: ease-in 0.3s;
+    cursor: pointer;
+}
+
+.app-header nav div:hover {
+    box-shadow: inset 0px -5px 0px var(--clr-mail-secondary);
+}
+
+.app-header nav div:hover a {
+    color: rgb(23, 23, 23);
+}
+
+
+

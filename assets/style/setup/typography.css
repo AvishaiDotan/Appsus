@@ -12,6 +12,11 @@
 }
 
 @font-face {
+    font-family: ProductSans-r-medium;
+    src: url(../../fonts/Google-sans-Font-Family/ProductSans-Medium.ttf);
+}
+
+@font-face {
     font-family: ProductSans-Bold;
     src: url(../../fonts/Google-sans-Font-Family/ProductSans-Bold.ttf);
 }

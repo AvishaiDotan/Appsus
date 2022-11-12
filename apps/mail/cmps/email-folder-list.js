@@ -7,7 +7,7 @@ export default {
     template:`
         <section>
             
-            <button @click.stop="$emit('compose-mail')">Compose</button>
+            <button @click.stop="$emit('compose-mail')" class="compose-btn">Compose</button>
 
             <div class="email-folders-container">
                 <email-folder v-for="folder in folders" :folder="folder" @selectFolder="selectFolder"></email-folder>
@@ -36,7 +36,7 @@ export default {
     data() {
         return {
             folders: [
-                {filterBy: '', folderName: 'All Mails', imgName: 'all', isSelected: false},
+                {filterBy: '', folderName: 'Inbox', imgName: 'all', isSelected: true},
                 {filterBy: 'isStarred', folderName: 'Starred', imgName: 'starred', isSelected: false},
                 {filterBy: 'isBookmarked', folderName: 'Bookmarked', imgName: 'bookmarked', isSelected: false},
                 {filterBy: 'isSent', folderName: 'Sent', imgName: 'sent', isSelected: false},

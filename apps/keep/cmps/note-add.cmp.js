@@ -15,13 +15,16 @@ export default {
                     <span @click="addTodo">+</span>
                 </div>
             <!-- </div> -->
-            <div class="add-actions">
-                <span @click="addNote('note-txt')" title="Add Text"><i class="fa-solid fa-font"></i></span>
-                <span @click="addNote('note-img')" title="Add Img"><i class="fa-solid fa-image"></i></span>
-                <span @click="addNote('note-todo')" title="Add Todos"><i class="fa-sharp fa-solid fa-book-open"></i></span>
-                <span @click="addNote('note-video')" title="Add Video"><i class="fa-solid fa-video"></i></span>
-                <span @click="addNote('note-canvas')"><i class="fa-solid fa-paintbrush"></i></span>
-                <span @click="save" title="Save note"><i class="fa-solid fa-floppy-disk"></i></span>
+            <div class="add-dropdown">
+                <div class="add-actions hide-actions">
+                    <span @click="addNote('note-txt')" title="Add Text"><i class="fa-solid fa-font"></i></span>
+                    <span @click="addNote('note-img')" title="Add Img"><i class="fa-solid fa-image"></i></span>
+                    <span @click="addNote('note-todo')" title="Add Todos"><i class="fa-sharp fa-solid fa-book-open"></i></span>
+                    <span @click="addNote('note-video')" title="Add Video"><i class="fa-solid fa-video"></i></span>
+                    <span @click="addNote('note-canvas')" title="Paint"><i class="fa-solid fa-paintbrush"></i></span>
+                    <span @click="save" title="Save note">Save</span>
+                </div>
+                <span class="add-dropdown-btn"><i class="fa-sharp fa-solid fa-caret-down"></i></span>
             </div>
         </section>
     </section>

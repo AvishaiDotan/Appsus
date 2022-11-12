@@ -6,8 +6,8 @@ export default {
         <ul class="todos-details">
             <li v-for="todo in note.info.todos">
                 <input type="text" v-model="todo.txt" :class="{'todo-done': todo.isDone}"/>
-                <input @click.stop="todoDone(todo)" type="checkbox" v-model="todo.isDone" title="Mark done!">
                 <h5 v-if="todo.isDone">{{todo.doneAt.toLocaleTimeString('en-GB')}}</h5>
+                <input @click.stop="todoDone(todo)" type="checkbox" v-model="todo.isDone" title="Mark done!">
             </li>
         </ul>
         <span class="btn" @click="addTodo">+</span>

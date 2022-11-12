@@ -1,15 +1,17 @@
 .keep-side {
-    height: 69vh;
+    /* height: 69vh; */
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     position: fixed;
     z-index: 10;
     width: 250px;
     left: -250px;
     bottom: 0;
-    background-color: white;
+    top: 150px;
+    background-color: var(--clr-mail-background);
     transition: .5s;
+    padding-top: 10px;
 }
 
 .keep-side span {
@@ -36,12 +38,17 @@
     width: 100%;
     opacity: 1;
     background-color: #f1e9d3;
+    border-radius: 20px;
+}
+
+.keep-side div:hover:not(.active){
+    background-color: rgb(187, 185, 185);
 }
 
 .keep-side:hover {
     left: 0;
     /* border: 1px solid rgb(106, 105, 105); */
-    box-shadow: 0 0 2px 0px;
+    /* box-shadow: 0 0 2px 0px; */
 }
 
 .keep-side div h3 {

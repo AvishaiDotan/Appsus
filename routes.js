@@ -33,10 +33,10 @@ const routerOptions = {
 			path: '/mail/:id',
 			component: emailDetails
 		},
-		{
-			path: '/keep/trash',
-			component: keepTrash
-		},
+		// {
+		// 	path: '/keep/trash',
+		// 	component: keepTrash
+		// },
 		{
 			path: '/keep/canvas/:id?',
 			component: keepCanvas

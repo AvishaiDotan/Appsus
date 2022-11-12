@@ -1,11 +1,10 @@
 export default {
     props: ['note'],
     template: `
-        <section class="note-video-preview">
-        <h2>{{note.info.title}}</h2>
+        <input type="text" v-model="note.info.title" placeholder="Title"/>
         <iframe :src="vidUrl" frameborder="0" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true">
         </iframe>
-        </section>
+        <input type="search" v-model="note.info.url" :placeholder="note.info.url" title="Enter New Video Url"/>
     `,
     computed: {
         vidUrl() {

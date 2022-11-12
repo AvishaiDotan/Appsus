@@ -1,6 +1,7 @@
 export default {
     props:['note'],
     template:`
+        <input type="text" v-model="note.info.title" placeholder="Title"/>
         <img @click="editCanvas" :src="dataUrl" />
     `,
     computed: {

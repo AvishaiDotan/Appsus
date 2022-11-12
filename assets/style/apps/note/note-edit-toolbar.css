@@ -35,13 +35,26 @@
 
 .options-btn {
     position: relative;
+    background-color: inherit;
 }
 
 .options-btn .options-bar {
     position: absolute;
-    top: 0;
+    top: 0px;
     right: 20px;
     z-index: 10;
+    background-color: var(--clr-mail-background);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 5px;
+    box-shadow: 0 0 1px;
+}
+
+.options-bar>* {
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .details-toolbar {

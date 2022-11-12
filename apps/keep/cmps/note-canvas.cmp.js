@@ -2,7 +2,7 @@ export default {
     props: ['note'],
     template: `
         <section class="note-canvas-preview">
-            <h3>{{note.info.title}}</h3>
+            <h2>{{note.info.title}}</h2>
             <img :src="dataUrl" />
         </section>
     `,

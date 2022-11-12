@@ -6,13 +6,14 @@ export default {
         <section class="toolbar">
             <span class="options-btn" @click.stop="toggleMore" title="More"><i class="fa-solid fa-ellipsis-vertical"></i>
                 <div v-if="isMore" class="options-bar">
-                    <span @click="remove" title="Delete"><i class="fa-solid fa-trash"></i></span>
+                    <span @click="remove" title="Delete">Delete</span>
+                    <span @click="makeCopy" title="Make copy">Copy</span>
                 </div>
             </span>
             <span title="Change color" @click.stop="palateClicked" class="changeColor"><i class="fa-solid fa-palette"></i></span>
             <span title="Pin" @click.stop="togglePin"><i class="fa-solid fa-thumbtack"></i></span>
-            <span title="Move To Archive"><i class="fa-solid fa-box-archive"></i></span>
-            <span v-if="isDetails" @click="close"><i class="fa-solid fa-x"></i></span>
+            <span title="Move To Archive" @click.stop><i class="fa-solid fa-box-archive"></i></span>
+            <span v-if="isDetails" title="Close and save" @click="close"><i class="fa-solid fa-x"></i></span>
             <!-- <span v-if="isDetails" @click="save">Save</span> -->
 
             <!-- note.isMouseOver &&  -->
@@ -39,6 +40,7 @@ export default {
             // this.ispalateClicked = false
             this.note.ispalateClicked = false
             this.$emit('changeColor', color)
+            console.log(color);
         },
         togglePin() {
             // console.log(this.note.isPinned);
@@ -58,6 +60,10 @@ export default {
         save() {
             this.$emit('save')
         },
+        makeCopy() {
+            const copy = JSON.parse(JSON.stringify(this.note))
+            this.$emit('makeCopy', copy)
+        }
 
     },
     computed: {

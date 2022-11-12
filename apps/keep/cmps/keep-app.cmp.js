@@ -1,8 +1,6 @@
 import { noteService } from '../services/note.service.js'
 import { showErrorMsg, showSuccessMsg } from '../../../services/event-bus.service.js'
 
-// import draggable from 'vuedraggable'
-
 import noteList from './note-list.cmp.js'
 import noteAdd from './note-add.cmp.js'
 import keepHeader from './keep-header.cmp.js'
@@ -16,15 +14,14 @@ export default {
         <section class="main-keep-layout" :class="doBlur">
             <note-add @add="addNew"/>
             <note-list v-if="notes.length"
-                :notes="notesToShow" @save="save" @addToTrash="addToTrash"/>
+                :notes="notesToShow" @save="save"/>
         </section>
-        <router-view :removedNotes="removedNotes"></router-view>
+        <router-view></router-view>
         </section>
     `,
     data() {
         return {
             notes: [],
-            removedNotes: [],
             filterBy: {
                 txt: ''
             },
@@ -46,7 +43,7 @@ export default {
             )
         },
         addNew(note) {
-            this.notes.push(note)
+            this.notes.unshift(note)
         },
         setFilter(filterBy) {
             this.filterBy = filterBy
@@ -55,12 +52,16 @@ export default {
             this.isSideActive = isSideActive
         },
         goTo(to) {
+<<<<<<< HEAD
+=======
+            console.log(to);
+>>>>>>> c938c20c02c0be8615a7eedd8069cb5f5b4b333e
             this.$router.push(`${to}`)
         },
-        addToTrash(removedNote) {
-            this.removedNotes.push(removedNote)
-            console.log(this.removedNotes);
-        },
+        // addToTrash(removedNote) {
+        //     this.removedNotes.push(removedNote)
+        //     console.log(this.removedNotes);
+        // },
     },
     computed: {
         notesToShow() {
@@ -80,7 +81,9 @@ export default {
             return notes
         },
         doBlur() {
-            return { blur: this.isBlur }
+            // return { blur: this.isBlur }
+            if(this.$route.params?.id) return 'blur'
+            else return 'unblur'
         },
         noteId() {
             return this.$route.params.id
@@ -89,17 +92,16 @@ export default {
             return { 'side-active': this.isSideActive }
         }
     },
-    watch: {
-        noteId() {
-            // console.log('hi');
-            this.isBlur = !this.isBlur
-        }
-    },
+    // watch: {
+    //     noteId() {
+    //         // console.log('hi');
+    //         this.isBlur = !this.isBlur
+    //     }
+    // },
     components: {
         noteList,
         noteAdd,
         keepHeader,
         keepSide,
-        // draggable
     }
 }

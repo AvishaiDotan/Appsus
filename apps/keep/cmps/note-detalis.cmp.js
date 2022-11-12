@@ -3,6 +3,8 @@ import noteImgDetails from "./note-img-details.cmp.js"
 import noteTodoDetails from "./note-todo-details.cmp.js"
 import noteEditToolbar from "./note-edit-toolbar.cmp.js"
 import noteCanvasDetails from "./note-canvas-details.cmp.js"
+import noteVideoDetails from "./note-video-details.cmp.js"
+import noteAudioDetails from "./note-audio-details.cmp.js"
 
 
 import { noteService } from "../services/note.service.js"
@@ -15,7 +17,8 @@ export default {
         <component :is="note.type + '-details'" :note="note" :save="save">
         </component>
         <note-edit-toolbar :note="note" :isDetails="true" @changeColor="changeColor" 
-        @remove="remove" @close="close" @togglePin="togglePin" class="details-toolbar"/>
+        @remove="remove" @close="close" @togglePin="togglePin" 
+        @makeCopy="makeCopy" class="details-toolbar"/>
     </section>
     `,
     data() {
@@ -24,14 +27,16 @@ export default {
         }
     },
     created() {
-        console.log(this.note)
+        // console.log(this.note)
     },
     components: {
         noteTxtDetails,
         noteImgDetails,
         noteEditToolbar,
         noteTodoDetails,
-        noteCanvasDetails
+        noteCanvasDetails,
+        noteVideoDetails,
+        noteAudioDetails
 
     },
     methods: {
@@ -66,6 +71,14 @@ export default {
         save(note) {
             console.log('hi');
             noteService.save(note)
+        },
+        makeCopy(copy) {
+            copy.id = ''
+            noteService.save(copy).then(() => {
+                console.log('saved');
+                showSuccessMsg(`Note Copied`)
+                this.$emit('makeCopy', copy)
+            })
         }
     },
     computed: {

@@ -35,10 +35,10 @@ const routerOptions = {
 				},
 			]
 		},
-		{
-			path: '/keep/trash',
-			component: keepTrash
-		},
+		// {
+		// 	path: '/keep/trash',
+		// 	component: keepTrash
+		// },
 		{
 			path: '/keep/canvas/:id?',
 			component: keepCanvas

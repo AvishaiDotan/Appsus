@@ -30,10 +30,10 @@ export default {
             this.activeIdx = idx
             switch (idx) {
                 case 1:
-                    this.$emit('goTo', '/keep/')
+                    // this.$emit('goTo', '/keep')
                     break;
                 case 3:
-                    this.$emit('goTo', '/keep/trash')
+                    // this.$emit('goTo', '/keep/trash')
                     break;
 
                 default:

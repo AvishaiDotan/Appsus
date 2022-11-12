@@ -4,6 +4,7 @@ import noteVideo from "./note-video.cmp.js"
 import noteEditToolbar from "./note-edit-toolbar.cmp.js"
 import noteTodo from "./note-todo.cmp.js"
 import noteCanvas from "./note-canvas.cmp.js"
+import noteAudio from "./note-audio.cmp.js"
 
 import { noteService } from '../services/note.service.js'
 import { showErrorMsg, showSuccessMsg } from '../../../services/event-bus.service.js'
@@ -13,10 +14,9 @@ export default {
     props: ['note'],
     template: `
         <article class="note-preview" :class="setColor" @mouseleave="isMouseOver(false)" @mouseover="isMouseOver(true)">
-            {{note.color}}
             <component :is="note.type" :note="note" @save="save">
             </component>
-            <note-edit-toolbar :note="note" @changeColor="changeColor" @remove="remove" @togglePin="togglePin"/>
+            <note-edit-toolbar :note="note" @changeColor="changeColor" @remove="remove" @togglePin="togglePin" @makeCopy="makeCopy"/>
         </article>
     `,
     data() {
@@ -54,6 +54,14 @@ export default {
         save(note) {
             console.log(note);
             // noteService.save(note)
+        },
+        makeCopy(copy) {
+            copy.id = ''
+            noteService.save(copy).then(() => {
+                console.log('saved');
+                showSuccessMsg(`Note Copied`)
+                this.$emit('makeCopy', copy)
+            })
         }
 
     },
@@ -68,6 +76,7 @@ export default {
         noteEditToolbar,
         noteVideo,
         noteTodo,
-        noteCanvas
+        noteCanvas,
+        noteAudio
     }
 }

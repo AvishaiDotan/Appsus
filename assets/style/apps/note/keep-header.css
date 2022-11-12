@@ -3,7 +3,9 @@
     justify-content: space-between;
     align-items: center;
     padding: 8px 16px;
+    padding-right: 50px;
     border-bottom: 1px solid rgb(157 143 143 / 45%);
+    
 }
 
 .keep-header input {
@@ -18,6 +20,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    margin-inline-end: 10px;
 }
 
 .keep-header h1 {

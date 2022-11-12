@@ -30,7 +30,7 @@ export default {
         this.canvas = this.$refs.myCanvas
         this.ctx = this.canvas.getContext('2d')
         const elContainer = document.querySelector('.canvas-container')
-        this.canvas.width = elContainer.offsetWidth
+        this.canvas.width = elContainer.offsetWidth - 100
         this.canvas.height = elContainer.offsetHeight - 50
 
         const noteId = this.$route.params.id

@@ -26,6 +26,7 @@
 }
 
 .note-preview {
+    text-overflow: ellipsis;
     break-inside: avoid;
     border: 1px solid rgb(162, 161, 161);
     transition: .4s;
@@ -79,4 +80,11 @@
 .note-preview h5,
 .note-preview h6 {
     margin: 0;
+    text-align: center;
+    padding-bottom: 5px;
+}
+
+.note-preview h2 {
+    font-size: 1.5rem;
+    word-wrap: break-word;
 }

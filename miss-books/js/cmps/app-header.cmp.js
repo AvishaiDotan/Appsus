@@ -12,9 +12,7 @@ export default {
                     <router-link to="/bookApp">Book Gallery</router-link>
                     <router-link to="/about">About</router-link>
                     <a href="../index.html">AppSus</a>
-                </div>
-
-                
+                </div>       
             </div>
         </header>
     `,

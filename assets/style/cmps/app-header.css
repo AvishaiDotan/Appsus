@@ -40,5 +40,11 @@
     color: rgb(23, 23, 23);
 }
 
+@media screen and (max-width: 600px) {
+    .app-header{
+        padding-inline: 0;
+    }
+}
+
 
 

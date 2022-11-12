@@ -8,7 +8,7 @@ export default {
                 <h3>In today's world of technology, Appsus manages three main activities</h3>
                 <p>Contact and Internet communication through the best email system available</p>
                 <p>Clear and easy-to-use notes management system</p>
-                <p>bookstore for storing and managing your favorite books!</p> 
+                <p>Bookstore for storing and managing your favorite books!</p> 
                 <nav>
                     <router-link to="/mail"><p class="mail">Try Our Mail</p></router-link>
                     <router-link to="/keep"><p class="keep">Try Our Keep</p></router-link>

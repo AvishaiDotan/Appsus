@@ -52,10 +52,7 @@ export default {
             this.isSideActive = isSideActive
         },
         goTo(to) {
-<<<<<<< HEAD
-=======
-            console.log(to);
->>>>>>> c938c20c02c0be8615a7eedd8069cb5f5b4b333e
+            // console.log(to);
             this.$router.push(`${to}`)
         },
         // addToTrash(removedNote) {

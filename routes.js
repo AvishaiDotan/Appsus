@@ -28,10 +28,12 @@ const routerOptions = {
 		{
 			path: '/mail',
 			component: mailApp,
-		},
-		{
-			path: '/mail/:id',
-			component: emailDetails
+			children: [
+				{
+					path: '/mail/:id?',
+					component: emailDetails
+				},
+			]
 		},
 		{
 			path: '/keep/trash',

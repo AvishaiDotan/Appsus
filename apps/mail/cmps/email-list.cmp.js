@@ -42,10 +42,10 @@ export default {
     },
     methods: {
         handleOpeningEmail(email) {
-            console.log(email);
             email.isRead = true
             this.$emit('set-open-email', email)
             emailService.save(email)
+            this.$router.push(`/mail/` + email.id)
         },
         setAsRead(email) {
             
@@ -119,7 +119,7 @@ export default {
         sortImg() {
             return (this.sortBy.descending) ? `./assets/style/apps/mail/icons/arrow-down-a-z-solid.svg` :
                 `./assets/style/apps/mail/icons/arrow-up-a-z-solid.svg`
-        }
+        },
     },
     components: {
         emailPreview,
@@ -133,5 +133,4 @@ export default {
             this.sideBarOpen = !this.sideBarOpen
         })
     },
-
 }

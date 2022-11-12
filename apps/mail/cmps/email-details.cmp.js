@@ -77,15 +77,14 @@ export default {
                 return monthNames[emailDate.getMonth()] + ' ' + (emailDate.getDay() + 1)
             }
 
-        }
+        },
     },
     methods: {
         unselectEmail() {
             eventBus.emit('close-email', false)
         },
-
         deleteEmail() {
-            
+
             this.email.removedAt = Date.now()
             emailService.save(this.email)
                 .then(() => {

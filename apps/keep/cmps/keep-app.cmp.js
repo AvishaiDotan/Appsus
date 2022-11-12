@@ -55,7 +55,6 @@ export default {
             this.isSideActive = isSideActive
         },
         goTo(to) {
-            console.log('hi');
             this.$router.push(`${to}`)
         },
         addToTrash(removedNote) {

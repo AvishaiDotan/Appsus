@@ -86,3 +86,50 @@
     margin-inline-end: 10px;
     padding: 15px;
 }
+
+.email-list .overlay {
+    display: none;
+}
+
+.email-list .overlay {
+    width: 100%;
+    height: calc(100vh - 184px);
+    background-color: #0000004f;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 20;
+    transition: 0.4s;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.email-list .overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+@media screen and (max-width: 980px) {
+    .email-container {  
+        grid-template-columns: 20px 20px 100px 1fr 55.6px;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .headlines-container {
+        position: fixed;
+        top: 184px;
+        left: 0;
+        z-index: 150;
+        background-color: var(--clr-mail-background);
+        width: 100%;
+        display: none;
+    }
+    .email-container {
+        position: relative;
+        top: 0;
+    }
+    .email-list .overlay {
+        display: block;
+    }
+}

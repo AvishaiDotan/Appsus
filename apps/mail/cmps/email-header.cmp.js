@@ -1,12 +1,12 @@
 import emailSearch from "./email-search.cmp.js"
+import { eventBus } from "../../../services/event-bus.service.js"
 
 export default {
-    // ADD HOVER AND LINK TO RESET PAGE IN IMG LOGO
     template: `
             <img class="email-logo" src="../assets/style/apps/mail/icons/gmail-logo-icon.png" alt="email-logo" />
             <div class="main-header-features">
                 <email-search class="email-search"/>
-                <img class="appsus-menu-btn" src="./assets/style/apps/mail/icons/appsus-grid-icon.png" alt="menu-btn" />
+                <img @click="toggleMailSideMenu" class="mail-mobile-side-menu" src="./assets/style/apps/mail/icons/appsus-grid-icon.png" alt="menu-btn" />
             </div>
 
         
@@ -19,8 +19,12 @@ export default {
     computed: {
     },
     methods: {
+        toggleMailSideMenu() {
+            eventBus.emit('toggle-mail-side-menu')
+        }
     },
     components: {
         emailSearch
     }
+
 }

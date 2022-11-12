@@ -32,4 +32,29 @@
   
 .email-folder-list { grid-area: email-folder-list; }
 
+
+@media screen and (max-width: 980px) {
+    .email-app-container {  
+        grid-template-columns: 200px 1fr;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .email-folder-list {
+        position: fixed;
+        z-index: 150;
+        top: 184px;
+        left: -1000px;
+        background-color: var(--clr-mail2);
+        width: 80%;
+        height: 100vh;
+        box-shadow: 0.0001px 13px 9px 0px black;
+        padding-inline-end: 30px;
+        transition: 0.4s;
+    }
+    .email-app-container {  
+        display: block;
+    }
+}
+
   

@@ -5,7 +5,7 @@ import emailFolder from "./email-folder.cmp.js"
 export default {
     props: ['emails'],
     template:`
-        <section>
+        <section ref="emailSideMenu">
             
             <button @click.stop="$emit('compose-mail')" class="compose-btn">Compose</button>
 
@@ -65,7 +65,13 @@ export default {
     },
     components: {
         emailFolder,
-    }
+    },
+
+    created() {
+        eventBus.on('toggle-mail-side-menu', () => {
+            this.$refs.emailSideMenu.style.left = (this.$refs.emailSideMenu.style.left === '0px') ? '-1000px' : '0px'
+        })
+    },
     
 
 }

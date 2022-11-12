@@ -10,9 +10,9 @@ export default {
                 <p>Clear and easy-to-use notes management system</p>
                 <p>bookstore for storing and managing your favorite books!</p> 
                 <nav>
-                    <router-link to="/mail"><p class="mail">Try Our Mail!</p></router-link>
-                    <router-link to="/keep"><p class="keep">Try Our Keep!</p></router-link>
-                    <a href="./miss-books/index.html"><p class="books">Try Our Books!</p></a>
+                    <router-link to="/mail"><p class="mail">Try Our Mail</p></router-link>
+                    <router-link to="/keep"><p class="keep">Try Our Keep</p></router-link>
+                    <a href="./miss-books/index.html"><p class="books">Try Our Books</p></a>
                 </nav>
                 <img class="home-page-img" src="./miss-books/img/illustration-reporting.0215bbf2f950.svg" alt="" />
 

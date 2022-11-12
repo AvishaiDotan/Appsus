@@ -18,6 +18,7 @@ export default {
                     <!-- <td class="headline" v-for="headlineTxt in tableHeadlines" @click.stop="setSort(headlineTxt)" :title="headline">{{headline}}</td> -->
                 </tr>
             </thead>
+            <div :class="{open: sideBarOpen}" @click="toggleMailSideMenu" class="overlay"></div>
             <tbody class="emails-container">
                 <tr v-for="email in emailsToShow" >
                     <email-preview 
@@ -36,6 +37,7 @@ export default {
             sortBy: { type: '', descending: true },
             tableHeadlines: ['', '', 'a-z', '', 'time'],
             emails: [],
+            sideBarOpen: false,
         }
     },
     methods: {
@@ -71,8 +73,10 @@ export default {
         setSort(sortBy) {
             if (this.sortBy.type === sortBy) this.sortBy.descending = !this.sortBy.descending
             this.sortBy.type = sortBy
+        },
+        toggleMailSideMenu() {
+            eventBus.emit('toggle-mail-side-menu')
         }
-
 
     },
     computed: {
@@ -125,6 +129,9 @@ export default {
         eventBus.on('set-filter', (filterBy) => { this.setFilter(filterBy) })
         // eventBus.on('save-error', () => {this.setEmails()})
         eventBus.on('reload-list', () => { this.setEmails() })
+        eventBus.on('toggle-mail-side-menu', () => {
+            this.sideBarOpen = !this.sideBarOpen
+        })
     },
 
 }

@@ -72,14 +72,6 @@ export default {
             console.log('hi');
             noteService.save(note)
         },
-        makeCopy(copy) {
-            copy.id = ''
-            noteService.save(copy).then(() => {
-                console.log('saved');
-                showSuccessMsg(`Note Copied`)
-                this.$emit('makeCopy', copy)
-            })
-        }
     },
     computed: {
         // noteId() {

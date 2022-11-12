@@ -7,7 +7,7 @@ export default {
             <span class="options-btn" @click.stop="toggleMore" title="More"><i class="fa-solid fa-ellipsis-vertical"></i>
                 <div v-if="isMore" class="options-bar">
                     <span @click="remove" title="Delete">Delete</span>
-                    <span @click="makeCopy" title="Make copy">Copy</span>
+                    <span v-if="!isDetails" @click="makeCopy" title="Make copy">Copy</span>
                 </div>
             </span>
             <span title="Change color" @click.stop="palateClicked" class="changeColor"><i class="fa-solid fa-palette"></i></span>
@@ -61,8 +61,11 @@ export default {
             this.$emit('save')
         },
         makeCopy() {
-            const copy = JSON.parse(JSON.stringify(this.note))
-            this.$emit('makeCopy', copy)
+            if (this.isDetails) this.$emit('makeCopy', this.note)
+            else {
+                const copy = JSON.parse(JSON.stringify(this.note))
+                this.$emit('makeCopy', copy)
+            }
         }
 
     },

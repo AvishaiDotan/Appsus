@@ -1,14 +1,14 @@
 .keep-side {
-    height: 70vh;
+    height: 69vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     position: fixed;
     z-index: 10;
     width: 250px;
-    left: -212px;
+    left: -250px;
     bottom: 0;
-    background-color: whitesmoke;
+    background-color: white;
     transition: .5s;
 }
 
@@ -19,15 +19,14 @@
 }
 
 .keep-side span:hover {
-    /* background-color: rgb(255, 244, 229); */
     width: 233px;
-    border-bottom: 1px solid rgb(36, 35, 35);
+    /* border-bottom: 1px solid rgb(36, 35, 35); */
 }
 
 .keep-side div {
     display: flex;
     justify-content: end;
-    width: 0;
+    width: 0px;
     padding: 5px;
     opacity: .8;
     transition: .5s;
@@ -36,13 +35,49 @@
 .keep-side div:hover {
     width: 100%;
     opacity: 1;
+    background-color: #f1e9d3;
 }
 
 .keep-side:hover {
     left: 0;
-    border: 1px solid rgb(106, 105, 105);
+    /* border: 1px solid rgb(106, 105, 105); */
+    box-shadow: 0 0 2px 0px;
 }
 
+.keep-side div h3 {
+    color: white;
+}
+
+.keep-side div:hover h3 {
+    color: black;
+    text-decoration: underline;
+}
+
+.picked-side-option {
+    background-color: #feefc3;
+}
+
+.keep-side.side-active {
+    left: 0;
+    box-shadow: 0 0 2px 0px;
+}
+
+
+
+.notes.active,
+.reminders.active,
+.trash.active {
+    width: 100%;
+    opacity: 1;
+    background-color: #f1e9d3;
+}
+
+.notes.active h3,
+.reminders.active h3,
+.trash.active h3 {
+    color: black;
+    text-decoration: underline;
+}
 
 
 

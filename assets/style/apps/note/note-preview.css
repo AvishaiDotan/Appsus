@@ -30,7 +30,7 @@
     border: 1px solid rgb(162, 161, 161);
     transition: .4s;
     border-radius: 10px;
-    /* padding-top: 5px; */
+    padding: 5px;
 }
 
 .note-preview:hover {
@@ -59,6 +59,18 @@
     text-decoration: line-through;
 }
 
+.todo-done {
+    text-decoration: line-through;
+}
+
+.todos-preview li{
+    display: flex;
+    justify-content: space-between;
+}
+
+.todos-preview {
+    padding: 10px;
+}
 
 .note-preview h1,
 .note-preview h2,

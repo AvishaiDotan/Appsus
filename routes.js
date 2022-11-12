@@ -7,6 +7,9 @@ import emailDetails from './apps/mail/cmps/email-details.cmp.js'
 
 import keepApp from './apps/keep/cmps/keep-app.cmp.js'
 import noteAdd from './apps/keep/cmps/note-add.cmp.js'
+import noteDetalis from './apps/keep/cmps/note-detalis.cmp.js'
+import keepTrash from './apps/keep/cmps/keep-trash.cmp.js'
+import keepCanvas from './apps/keep/cmps/keep-canvas.cmp.js'
 
 
 const { createRouter, createWebHashHistory } = VueRouter
@@ -31,16 +34,25 @@ const routerOptions = {
 			component: emailDetails
 		},
 		{
+			path: '/keep/trash',
+			component: keepTrash
+		},
+		{
+			path: '/keep/canvas/:id?',
+			component: keepCanvas
+		},
+		{
 			path: '/keep',
 			component: keepApp,
 			children: [
 				{
-					path: '/keep/:id?',
-					component: noteAdd
+					path: '/keep/:id',
+					component: noteDetalis
 				},
 			]
 		},
-	],
+	]
 }
+
 
 export const router = createRouter(routerOptions)

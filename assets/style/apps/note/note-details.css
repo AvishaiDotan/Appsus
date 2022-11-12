@@ -1,13 +1,18 @@
 .note-details {
+    display: grid;
+    justify-content: center;
+    align-items: center;
     position: fixed;
     top: 50%;
     right: 50%;
     transform: translate(50%, -50%);
-    min-width: 200px;
-    min-height: 100px;
+    min-width: 300px;
+    min-height: 200px;
+    max-height: 500px;
     border-radius: 20px;
-    background-color: transparent;
-    z-index: 1;
+    background-color: rgb(255 244 229);
+    z-index: 9;
+    opacity: 1;
     /* text-align: center; */
     /* display: flex;
     flex-direction: column; */
@@ -21,6 +26,7 @@
 .note-details img {
     border-radius: inherit;
     object-fit: contain;
+    max-height: 500px;
     /* height: 100%; */
 }
 
@@ -39,4 +45,13 @@
 
 .todos-details input {
     padding: 3px;
+    background-color: transparent;
+}
+
+.note-details input {
+    background-color: transparent;
+}
+
+.todos-details h5 {
+    margin: 0;
 }

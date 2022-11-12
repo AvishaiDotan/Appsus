@@ -13,10 +13,10 @@ export default {
             <span title="Pin" @click.stop="togglePin"><i class="fa-solid fa-thumbtack"></i></span>
             <span title="Move To Archive"><i class="fa-solid fa-box-archive"></i></span>
             <span v-if="isDetails" @click="close"><i class="fa-solid fa-x"></i></span>
-            <span v-if="isDetails" @click="save">Save</span>
+            <!-- <span v-if="isDetails" @click="save">Save</span> -->
 
-            
-            <div v-if="note.isMouseOver && note.ispalateClicked" class="color-palate" @click.stop="" >
+            <!-- note.isMouseOver &&  -->
+            <div v-if="note.ispalateClicked" class="color-palate" @click.stop="" >
                 <div @click.stop="changeColor(color.split('#')[1])" v-for="color in colors" class="color" :class="color.split('#')[1]">
                 </div>
             </div>
@@ -32,7 +32,7 @@ export default {
     },
     methods: {
         palateClicked() {
-            // this.ispalateClicked = true
+            // this.ispalateClicked =
             this.note.ispalateClicked = true
         },
         changeColor(color) {
@@ -41,9 +41,10 @@ export default {
             this.$emit('changeColor', color)
         },
         togglePin() {
+            // console.log(this.note.isPinned);
             this.note.isPinned = !this.note.isPinned
-            console.log(this.note);
-            if (this.note.isPinned) this.$emit('pin', this.note)
+            // console.log(this.note.isPinned);
+            this.$emit('togglePin', this.note)
         },
         toggleMore() {
             this.isMore = !this.isMore
@@ -52,7 +53,7 @@ export default {
             this.$emit('remove', this.note.id)
         },
         close() {
-            this.$emit('close')
+            this.$emit('close', this.note)
         },
         save() {
             this.$emit('save')

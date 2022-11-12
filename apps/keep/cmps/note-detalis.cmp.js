@@ -2,46 +2,44 @@ import noteTxtDetails from "./note-txt-details.cmp.js"
 import noteImgDetails from "./note-img-details.cmp.js"
 import noteTodoDetails from "./note-todo-details.cmp.js"
 import noteEditToolbar from "./note-edit-toolbar.cmp.js"
+import noteCanvasDetails from "./note-canvas-details.cmp.js"
+
+
+import { noteService } from "../services/note.service.js"
+import { showSuccessMsg, showErrorMsg } from "../../../services/event-bus.service.js"
 
 export default {
     props: ['note'],
     template: `
-    <section class="note-details" :class="setColor">
-        <component :is="note.type + '-details'" :note="note">
+    <section v-if="note" class="note-details" :class="setColor">
+        <component :is="note.type + '-details'" :note="note" :save="save">
         </component>
-        <note-edit-toolbar :note="note" :isDetails="true" @changeColor="changeColor" @remove="remove" @close="close" @save="save" class="details-toolbar"/>
+        <note-edit-toolbar :note="note" :isDetails="true" @changeColor="changeColor" 
+        @remove="remove" @close="close" @togglePin="togglePin" class="details-toolbar"/>
     </section>
     `,
     data() {
         return {
-            txt: '',
             todos: []
         }
     },
     created() {
-        this.txt = this.note.info.txt || null
-        // this.todos ? [...this.note.info.todos] : null
-    },
-    methods: {
-
+        console.log(this.note)
     },
     components: {
         noteTxtDetails,
         noteImgDetails,
         noteEditToolbar,
-        noteTodoDetails
+        noteTodoDetails,
+        noteCanvasDetails
 
     },
     methods: {
-        close() {
-            this.note.isPicked = false
-            if (this.txt) this.note.info.txt = this.txt
-            // else this.note.info.todos = this.todos
-        },
-        save() {
-            this.$emit('save')
-
-            this.note.isPicked = false
+        close(note) {
+            noteService.save(note).then(() => {
+                this.note.isPicked = false
+                this.$router.push(`/keep`)
+            })
         },
         changeColor(color) {
             this.note.color = color
@@ -49,12 +47,31 @@ export default {
         },
         remove(id) {
             noteService.remove(id).then(() => {
+                this.$router.push(`/keep`)
                 showSuccessMsg(`Note ${id} Deleted...`)
                 this.$emit('remove', id)
             })
+        },
+        loadNote() {
+            // console.log('hi');
+            const id = this.$route.params.id
+            noteService.get(id).then(note => this.note = note)
+        },
+        togglePin(note) {
+            noteService.save(note).then((note) => {
+                note.isPinned ? showSuccessMsg(`Note ${note.id} Pined...`) : showSuccessMsg(`Note ${note.id} Unpinned...`)
+                this.$emit('togglePin', note)
+            })
+        },
+        save(note) {
+            console.log('hi');
+            noteService.save(note)
         }
     },
     computed: {
+        // noteId() {
+        //     return this.$route.params.id
+        // },
         setColor() {
             return this.note.color
         }

@@ -45,7 +45,7 @@
 }
 
 .details-toolbar {
-    background-color: rgb(204, 201, 201);
+    /* background-color: rgb(204, 201, 201); */
     position: relative;
     z-index: 10;
 }

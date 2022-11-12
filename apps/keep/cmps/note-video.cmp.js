@@ -2,6 +2,7 @@ export default {
     props: ['note'],
     template: `
         <section class="note-video-preview">
+        <h3>{{note.info.title}}</h3>
         <iframe :src="vidUrl" frameborder="0" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true">
         </iframe>
         </section>

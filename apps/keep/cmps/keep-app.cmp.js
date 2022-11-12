@@ -1,6 +1,8 @@
 import { noteService } from '../services/note.service.js'
 import { showErrorMsg, showSuccessMsg } from '../../../services/event-bus.service.js'
 
+// import draggable from 'vuedraggable'
+
 import noteList from './note-list.cmp.js'
 import noteAdd from './note-add.cmp.js'
 import keepHeader from './keep-header.cmp.js'
@@ -9,21 +11,25 @@ import keepSide from './keep-side.cmp.js'
 export default {
     template: `
         <section class="note-app">
-        <keep-header @filter="setFilter"/>
-        <keep-side/>
-        <section class="main-keep-layout">
+        <keep-header @filter="setFilter" @toggleSide="toggleSide"/>
+        <keep-side :class="sideActive" @goTo="goTo"/>
+        <section class="main-keep-layout" :class="doBlur">
             <note-add @add="addNew"/>
             <note-list v-if="notes.length"
-                :notes="notesToShow" @save="save"/>
+                :notes="notesToShow" @save="save" @addToTrash="addToTrash"/>
         </section>
+        <router-view :removedNotes="removedNotes"></router-view>
         </section>
     `,
     data() {
         return {
             notes: [],
+            removedNotes: [],
             filterBy: {
                 txt: ''
-            }
+            },
+            isBlur: false,
+            isSideActive: false
         }
     },
     created() {
@@ -44,7 +50,18 @@ export default {
         },
         setFilter(filterBy) {
             this.filterBy = filterBy
-        }
+        },
+        toggleSide(isSideActive) {
+            this.isSideActive = isSideActive
+        },
+        goTo(to) {
+            console.log('hi');
+            this.$router.push(`${to}`)
+        },
+        addToTrash(removedNote) {
+            this.removedNotes.push(removedNote)
+            console.log(this.removedNotes);
+        },
     },
     computed: {
         notesToShow() {
@@ -58,15 +75,32 @@ export default {
                     for (var i = 0; i < note.info.todos.length; i++)
                         if (regex.test(note.info.todos[i].txt)) return true
                 }
+                else return regex.test(note.info.title)
                 return false
             })
             return notes
+        },
+        doBlur() {
+            return { blur: this.isBlur }
+        },
+        noteId() {
+            return this.$route.params.id
+        },
+        sideActive() {
+            return { 'side-active': this.isSideActive }
+        }
+    },
+    watch: {
+        noteId() {
+            // console.log('hi');
+            this.isBlur = !this.isBlur
         }
     },
     components: {
         noteList,
         noteAdd,
         keepHeader,
-        keepSide
+        keepSide,
+        // draggable
     }
 }

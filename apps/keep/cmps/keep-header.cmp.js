@@ -2,7 +2,7 @@ export default {
     template: `
         <section class="keep-header">
         <div class="side-container">
-            <span><i class="fa-solid fa-bars"></i></span>
+            <span @click="toggleSide"><i class="fa-solid fa-bars"></i></span>
             <img src="../../apps/keep/imgs/logo.png" alt="" />
                 <h1>Keep</h1>
             </div>
@@ -13,12 +13,17 @@ export default {
         return {
             filterBy: {
                 txt: ''
-            }
+            },
+            isSideActive: false
         }
     },
     methods: {
         filter() {
             this.$emit('filter', this.filterBy)
+        },
+        toggleSide() {
+            this.isSideActive = !this.isSideActive
+            this.$emit('toggleSide', this.isSideActive)
         }
     }
 }

@@ -141,6 +141,7 @@
     margin-inline-start: 10px;
     margin-block: 10px;
     padding: 30px;
+    transition: 0.4s;
 }
 
 .compose-btn:hover {

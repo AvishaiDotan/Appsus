@@ -129,3 +129,22 @@
     font-family: ProductSans-light;
 }
 
+.about-page {  display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "about-img about-txt"
+      "about-img about-cont";
+    max-height: calc(100vh - 80px);
+    overflow: hidden;
+  }
+  
+.about { grid-area: about-txt; }
+  
+.img-container { grid-area: about-img; }
+  
+.about-working-img-container { grid-area: about-cont; }
+  
+

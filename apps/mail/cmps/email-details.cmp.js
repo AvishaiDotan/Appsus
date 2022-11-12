@@ -30,7 +30,7 @@ export default {
                     </span>
                 </div>
                 <span></span>
-                <span>GO TO NEXT</span>
+                <!-- <span>GO TO NEXT</span> -->
             </header>
             <section class="email-content" >
                 <p class="email-headline">{{ email.headline }}</p>
